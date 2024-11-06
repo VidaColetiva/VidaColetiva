@@ -1,23 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
-import 'package:vidacoletiva/views/home_page.dart';
+import 'package:vidacoletiva/app.dart';
+import 'package:vidacoletiva/firebase_options.dart';
+import 'package:vidacoletiva/injection_setup.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await initilizeDependencies();
+
   runApp(const VidaColetiva());
-}
-
-class VidaColetiva extends StatelessWidget {
-  const VidaColetiva({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Vida Coletiva',
-      theme: ThemeData(
-        primaryColor: AppColors.primaryOrange,
-      ),
-      home: const HomePage(),
-    );
-  }
 }
