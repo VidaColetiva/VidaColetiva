@@ -11,6 +11,8 @@ class RedirectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserController userController = Provider.of<UserController>(context);
+      // return const LoginPage();
+
     if (userController.isLoading) {
       return const LoadingPage();
     }

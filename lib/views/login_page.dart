@@ -8,15 +8,41 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          "lib/resources/assets/images/logo.png",
-          color: AppColors.primaryOrange,
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              children: [
+                Image.asset(
+                  "lib/resources/assets/images/logo.png",
+                  color: AppColors.primaryOrange,
+                  width: 150,
+                ),
+                const SizedBox(height: 20,),
+                const Text(
+                  "VIDA",
+                  style: TextStyle(
+                      color: AppColors.primaryOrange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+                const Text(
+                  "COLETIVA",
+                  style: TextStyle(
+                      color: AppColors.primaryOrange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            googleLoginWidget(context),
+          ],
         ),
-        const Text("Vida Coletiva"),
-        googleLoginWidget(context),
-      ],
+      ),
     );
   }
 
@@ -26,9 +52,12 @@ class LoginPage extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryGreen,
         ),
-        child: const Text(
-          "Entrar com Google",
-          style: TextStyle(color: AppColors.white),
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "Entrar com Google",
+            style: TextStyle(color: AppColors.white, fontSize: 20),
+          ),
         ));
   }
 }
