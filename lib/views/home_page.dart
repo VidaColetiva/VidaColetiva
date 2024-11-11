@@ -12,26 +12,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 1;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void bottomBarNav(int where){
+    switch(where){
+      case 0:
+        Navigator.popAndPushNamed(context, '/events');
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: mainAppBar(context),
-      bottomNavigationBar: mainBottomBar(context, _selectedIndex, _onItemTapped),
+      bottomNavigationBar: mainBottomBar(context, 1, bottomBarNav),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             imageCarousel(),
             recentProjects(),
-            myProjectContributions(),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/50),
+              child: myProjectContributions(),
+            ),
           ],
         ),
       ),
@@ -80,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               'Project Name',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: MediaQuery.of(context).size.height/20,
+                fontSize: MediaQuery.of(context).size.height/25,
                 fontWeight: FontWeight.bold
               )
             ),
@@ -102,7 +110,7 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Text(
               'Projetos Recentes',
-              style: TextStyle(fontSize: MediaQuery.of(context).size.height/25, fontWeight: FontWeight.bold)
+              style: TextStyle(fontSize: MediaQuery.of(context).size.height/30, fontWeight: FontWeight.bold)
             ),
           )
         ),
@@ -123,18 +131,21 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Text(
                   'Minhas Contribuições',
-                  style: TextStyle(fontSize: MediaQuery.of(context).size.height/25, fontWeight: FontWeight.bold)
+                  style: TextStyle(fontSize: MediaQuery.of(context).size.height/30, fontWeight: FontWeight.bold)
               ),
             )
         ),
-        projectCarousel(AppColors.secondaryYellow),
+        Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height/15),
+          child: projectCarousel(AppColors.secondaryYellow),
+        ),
       ],
     );
   }
 
   Widget projectCarousel(Color cardColor){
     return SizedBox(
-      height: MediaQuery.of(context).size.height/4,
+      height: MediaQuery.of(context).size.height/6,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
@@ -173,59 +184,57 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    return Padding(
-      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 50),
-      child: Stack(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width / 2.5,
-            height: MediaQuery.of(context).size.height / 6,
-            decoration: BoxDecoration(
-              color: containerColor, // Cor de fundo do container
-              borderRadius: BorderRadius.circular(11),
-            ),
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 30,
-                    vertical: MediaQuery.of(context).size.height / 50,
-                  ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width / 150,
-                    decoration: BoxDecoration(
-                      color: AppColors.darkGreen, // Cor de fundo do container
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 50),
-                        child: projectText('Nome do Projeto', fontSize: 35, letterSpacing: -1, maxLines: 2),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          projectText('Instituição', fontSize: 60),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
-                            child: projectText('Publico Alvo', fontSize: 60),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return SizedBox(
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, '/project'),
+        child: Container(
+          width: MediaQuery.of(context).size.width / 2.5,
+          height: MediaQuery.of(context).size.height / 6,
+          decoration: BoxDecoration(
+            color: containerColor, // Cor de fundo do container
+            borderRadius: BorderRadius.circular(11),
           ),
-        ],
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width / 30,
+                  vertical: MediaQuery.of(context).size.height / 50,
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 150,
+                  decoration: BoxDecoration(
+                    color: AppColors.darkGreen, // Cor de fundo do container
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 50),
+                      child: projectText('Nome do Projeto', fontSize: 35, letterSpacing: -1, maxLines: 2),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        projectText('Instituição', fontSize: 60),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
+                          child: projectText('Publico Alvo', fontSize: 60),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
