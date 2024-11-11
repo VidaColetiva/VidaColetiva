@@ -1,16 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:vidacoletiva/app.dart';
+import 'package:vidacoletiva/firebase_options.dart';
+import 'package:vidacoletiva/injection_setup.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/events_page_v2.dart';
 import 'package:vidacoletiva/views/home_page.dart';
 import 'package:vidacoletiva/views/project_page.dart';
 
-void main() {
-  runApp(const VidaColetiva());
-}
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-class VidaColetiva extends StatelessWidget {
-  const VidaColetiva({Key? key}) : super(key: key);
+  await initilizeDependencies();
 
   @override
   Widget build(BuildContext context) {
