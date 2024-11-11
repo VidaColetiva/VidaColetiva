@@ -8,11 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_bottom_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_bottom_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/events_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/events_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/events_page_v2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/events_page_v2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/project_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

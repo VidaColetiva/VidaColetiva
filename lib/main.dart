@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
+import 'package:vidacoletiva/views/add_event_page.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/events_page_v2.dart';
 import 'package:vidacoletiva/views/home_page.dart';
@@ -26,6 +27,7 @@ class VidaColetiva extends StatelessWidget {
         '/events': (context) => const EventsPage(),
         '/project': (context) => const ProjectPage(),
         '/events_v2': (context) => const EventsPageV2(),
+        '/add_event': (context) => const AddEventPage(),
       },
     );
   }

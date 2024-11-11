@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                 left: MediaQuery.of(context).size.width/10,
               ),
               child: Text(
-                  'Minhas Contribuições',
+                  'Meus projetos',
                   style: TextStyle(fontSize: MediaQuery.of(context).size.height/30, fontWeight: FontWeight.bold)
               ),
             )
