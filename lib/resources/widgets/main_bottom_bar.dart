@@ -1,46 +1,46 @@
 
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 
-BottomNavigationBar mainBottomBar(BuildContext context, int selectedIndex, Function(int) onItemTapped){
-  Widget circularIcon(IconData icon){
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.primaryGreen,
-      ),
-      child: Icon(icon, color: Colors.white),
+Widget mainBottomBar(BuildContext context, int selectedIndex, Function(int) onItemTapped){
+
+  Widget activeIcon(IconData icon){
+    return Icon(
+      icon,
+      color: AppColors.white,
+      size: MediaQuery.of(context).size.height/15,
     );
   }
 
-  return BottomNavigationBar(
-    items: <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        label: 'Home',
+  Widget defaultIcon(IconData icon){
+    return Icon(
+      icon,
+      color: AppColors.black,
+      size: MediaQuery.of(context).size.height/20,
+    );
+  }
+
+  return ConvexAppBar(
+    initialActiveIndex: selectedIndex,
+    height: MediaQuery.of(context).size.height/10,
+    backgroundColor: AppColors.primaryOrange,
+    activeColor: AppColors.primaryGreen,
+    onTap: (int index) => onItemTapped(index),
+    items: [
+      TabItem(
+        icon: defaultIcon(Icons.text_snippet_outlined),
+        activeIcon: activeIcon(Icons.text_snippet_outlined),
       ),
-      BottomNavigationBarItem(
-        icon: selectedIndex == 1
-            ? Container(
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.blue,
-          ),
-          child: Icon(Icons.add, color: Colors.white),
-        )
-            : Icon(Icons.add),
-        label: 'Add',
+      TabItem(
+        icon: defaultIcon(Icons.home_outlined),
+        activeIcon: activeIcon(Icons.home_outlined),
       ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: 'Profile',
+      TabItem(
+        icon: defaultIcon(Icons.sms_outlined),
+        activeIcon: activeIcon(Icons.sms_outlined),
       ),
     ],
-    currentIndex: selectedIndex,
-    onTap: (int index){
-      onItemTapped(index);
-    },
   );
 }
+

@@ -21,6 +21,7 @@ dependencies:
   http: ^1.2.2
   crypto: ^3.0.3
   googleapis: ^13.1.0
+  convex_bottom_bar: ^3.2.0
 
 dev_dependencies:
   flutter_test:
