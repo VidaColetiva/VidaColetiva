@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyColhPWf2XP6LiCd8Ptlz5YbqtTs5yDG34',
-    appId: '1:231627897335:android:95a1b251df0a9288e096f2',
+    appId: '1:231627897335:android:70fec109b453a527e096f2',
     messagingSenderId: '231627897335',
     projectId: 'vida-coletiva-736b4',
     storageBucket: 'vida-coletiva-736b4.appspot.com',
@@ -66,12 +66,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAGqz_9WVG1lMshD7P9R6p_qWBDXvU_jt4',
-    appId: '1:231627897335:ios:72536817613d1d36e096f2',
+    appId: '1:231627897335:ios:c41689c64e9d2850e096f2',
     messagingSenderId: '231627897335',
     projectId: 'vida-coletiva-736b4',
     storageBucket: 'vida-coletiva-736b4.appspot.com',
     androidClientId: '231627897335-cjv7nj7q0n20ceo05bfugmn7tjg3jksf.apps.googleusercontent.com',
-    iosClientId: '231627897335-293losvtat7stf0q90o0klnjgrd7m144.apps.googleusercontent.com',
-    iosBundleId: 'com.example.vidacoletiva',
+    iosClientId: '231627897335-5fjojncg6cuidnfe5ts80n8cll4qn5u2.apps.googleusercontent.com',
+    iosBundleId: 'br.uff.vidacoletiva',
   );
+
 }

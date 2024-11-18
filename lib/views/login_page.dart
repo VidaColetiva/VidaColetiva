@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/event_controller.dart';
 import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 
@@ -21,7 +22,9 @@ class LoginPage extends StatelessWidget {
                   color: AppColors.primaryOrange,
                   width: 150,
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 const Text(
                   "VIDA",
                   style: TextStyle(
@@ -48,7 +51,13 @@ class LoginPage extends StatelessWidget {
 
   ElevatedButton googleLoginWidget(BuildContext context) {
     return ElevatedButton(
-        onPressed: Provider.of<UserController>(context).loginGoogle,
+        onPressed: () async {
+          if (!context.mounted) {
+            return;
+          }
+          await Provider.of<UserController>(context, listen: false).loginGoogle();
+          Provider.of<EventController>(context, listen: false).listOwnEvents();
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryGreen,
         ),

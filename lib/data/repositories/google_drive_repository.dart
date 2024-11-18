@@ -4,10 +4,10 @@ import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:googleapis/storage/v1.dart';
 import 'package:vidacoletiva/utils/authenticated_client.dart';
 
-class GoogleDriveService {
+class GoogleDriveRepository {
   late drive.DriveApi driveApi;
 
-  GoogleDriveService(AuthenticatedClient client) {
+  GoogleDriveRepository(AuthenticatedClient client) {
     driveApi = drive.DriveApi(client);
   }
 

@@ -3,11 +3,11 @@ import 'dart:io';
 import 'dart:math';
 import 'package:crypto/crypto.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:vidacoletiva/data/repositories/user_repository.dart';
 import 'package:vidacoletiva/utils/authenticated_client.dart';
 
 class LoginService {
@@ -22,24 +22,12 @@ class LoginService {
   AuthenticatedClient? authClient;
   GoogleSignInAccount? _account;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  UserRepository userRepository;
   GoogleSignInAccount? get account {
     return _account;
   }
 
-  LoginService();
-
-  _createUserDocument() async {
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .doc('/users/${FirebaseAuth.instance.currentUser!.uid}');
-    DocumentSnapshot documentSnapshot = await documentReference.get();
-    if (documentSnapshot.exists) return;
-
-    documentReference.set({
-      'created_at': DateTime.now(),
-      'updated_at': DateTime.now(),
-      'email': FirebaseAuth.instance.currentUser!.email,
-    });
-  }
+  LoginService(this.userRepository);
 
   onSignIn() async {
     var b = await _account!.authentication;
@@ -48,12 +36,12 @@ class LoginService {
     try {
       await firebaseAuth.signInWithCredential(authCredential);
     } catch (err) {
-      debugPrint(err.toString());
+      debugPrint("onSignIn: $err");
     }
 
     authClient = AuthenticatedClient({"Authorization": "Bearer ${b.accessToken}"});
 
-    _createUserDocument();
+    userRepository.createSelf();
   }
 
   Future<GoogleSignInAccount?> signInWithGoogle() async {
@@ -75,16 +63,7 @@ class LoginService {
     }
 
     if (auth.user != null) {
-      DocumentReference documentReference = FirebaseFirestore.instance
-          .doc('/users/${FirebaseAuth.instance.currentUser!.uid}');
-      DocumentSnapshot documentSnapshot = await documentReference.get();
-      if (documentSnapshot.exists) return;
-
-      documentReference.set({
-        'created_at': DateTime.now(),
-        'updated_at': DateTime.now(),
-        'email': auth.user!.email,
-      });
+      userRepository.createSelf();
     }
   }
 

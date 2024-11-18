@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/event_controller.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_app_bar.dart';
 import '../resources/widgets/main_bottom_bar.dart';
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<EventController>(context);
     return Scaffold(
       appBar: mainAppBar(context),
       bottomNavigationBar: mainBottomBar(context, 1, bottomBarNav),

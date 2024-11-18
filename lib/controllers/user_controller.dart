@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vidacoletiva/data/models/user_model.dart';
 import 'package:vidacoletiva/data/services/login_service.dart';
 
 class UserController extends ChangeNotifier {
@@ -8,6 +9,8 @@ class UserController extends ChangeNotifier {
   
   bool isLogged = false;
   bool isLoading = true;
+
+  UserModel? user;
 
   init() async {
     var ac = await _loginService.signInSilently();
