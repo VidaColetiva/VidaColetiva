@@ -3,6 +3,29 @@ import 'package:flutter/material.dart';
 import '../assets/colour_pallete.dart';
 
 Widget mainDrawer(BuildContext context){
+  Widget textButton(String text, Function onPressed){
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/20, vertical: MediaQuery.of(context).size.height/60),
+      child: TextButton(
+        onPressed: (){
+          onPressed();
+        },
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/60),
+          backgroundColor: AppColors.primaryOrange,
+        ),
+        child: Text(
+            text,
+            style: TextStyle(
+                color: AppColors.white,
+                fontSize: MediaQuery.of(context).size.height/40,
+                fontWeight: FontWeight.bold
+            )
+        ),
+      ),
+    );
+  }
+
   return Drawer(
     width: MediaQuery.of(context).size.width/1.5,
     backgroundColor: AppColors.tertiaryOrange,
@@ -11,47 +34,34 @@ Widget mainDrawer(BuildContext context){
       children: [
         DrawerHeader(
           decoration: BoxDecoration(
-            color: AppColors.primaryOrange,
+            color: AppColors.tertiaryOrange,
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.transparent,
+              ),
+            ),
           ),
-          child: Text(
-            'Olá, Fulano!',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: MediaQuery.of(context).size.height/25,
-              fontWeight: FontWeight.bold
-            )
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(Icons.account_circle_outlined, size: MediaQuery.of(context).size.height/12, color: AppColors.primaryOrange),
+              Text(
+                'Olá, Fulano!',
+                style: TextStyle(
+                  color: AppColors.darkGreen,
+                  fontSize: MediaQuery.of(context).size.height/30,
+                  fontWeight: FontWeight.bold
+                )
+              ),
+            ],
           ),
         ),
-        ListTile(
-          title: Text('Home'),
-          onTap: () {
-            Navigator.pushNamed(context, '/home');
-          },
-        ),
-        ListTile(
-          title: Text('Eventos'),
-          onTap: () {
-            Navigator.pushNamed(context, '/events');
-          },
-        ),
-        ListTile(
-          title: Text('Projetos'),
-          onTap: () {
-            Navigator.pushNamed(context, '/project');
-          },
-        ),
-        ListTile(
-          title: Text('Eventos V2'),
-          onTap: () {
-            Navigator.pushNamed(context, '/events_v2');
-          },
-        ),
-        ListTile(
-          title: Text('Adicionar Evento'),
-          onTap: () {
-            Navigator.pushNamed(context, '/add_event');
-          },
-        ),
+        textButton('Perfil', (){}),
+        textButton('Preferências', (){}),
+        textButton('Sobre o app', (){}),
+        textButton('Termos legais', (){}),
+        textButton('Avaliar app', (){}),
+        textButton('Sair', (){}),
       ],
     ),
   );

@@ -41,7 +41,10 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             imageCarousel(),
-            addButton(context, (){Navigator.pushNamed(context, '/project');}, 'Adicionar Projeto', AppColors.primaryOrange),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/50),
+              child: addButton(context, (){Navigator.pushNamed(context, '/add_project');}, 'Adicionar Projeto', AppColors.primaryOrange),
+            ),
             recentProjects(),
             Padding(
               padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/50),

@@ -15,7 +15,7 @@ class _AddEventPageState extends State<AddEventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: addAppBar(context),
+      appBar: addAppBar(context, 'evento'),
       body: SingleChildScrollView(
         child: Column(
           children: [
