@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_app_bar.dart';
 import '../resources/widgets/main_bottom_bar.dart';
+import '../resources/widgets/main_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,8 +28,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
-      appBar: mainAppBar(context),
+      key: scaffoldKey,
+      appBar: mainAppBar(context, scaffoldKey: scaffoldKey),
       bottomNavigationBar: mainBottomBar(context, 1, bottomBarNav),
       body: SingleChildScrollView(
         child: Column(
