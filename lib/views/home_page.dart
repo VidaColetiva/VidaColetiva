@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:vidacoletiva/resources/widgets/custom_buttons.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_app_bar.dart';
 import '../resources/widgets/main_bottom_bar.dart';
@@ -34,11 +35,13 @@ class _HomePageState extends State<HomePage> {
       key: scaffoldKey,
       appBar: mainAppBar(context, scaffoldKey: scaffoldKey),
       bottomNavigationBar: mainBottomBar(context, 1, bottomBarNav),
+      endDrawer: mainDrawer(context),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             imageCarousel(),
+            addButton(context, (){Navigator.pushNamed(context, '/project');}, 'Adicionar Projeto', AppColors.primaryOrange),
             recentProjects(),
             Padding(
               padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/50),

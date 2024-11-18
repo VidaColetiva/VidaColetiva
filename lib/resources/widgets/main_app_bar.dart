@@ -30,7 +30,7 @@ AppBar mainAppBar(BuildContext mainContext, {bool? leading, GlobalKey<ScaffoldSt
         iconSize: MediaQuery.of(mainContext).size.height/25,
         color: AppColors.white,
         onPressed: (){
-          scaffoldKey?.currentState?.openDrawer();
+          scaffoldKey?.currentState?.openEndDrawer();
         },
       ),
     ],

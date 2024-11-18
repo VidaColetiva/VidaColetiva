@@ -83,7 +83,7 @@ class _AddEventPageState extends State<AddEventPage> {
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: AppColors.darkGreen,
-                width: 2,
+                width: 1.5,
               ),
             ),
             enabledBorder: OutlineInputBorder(
@@ -112,7 +112,7 @@ class _AddEventPageState extends State<AddEventPage> {
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: AppColors.darkGreen,
-                  width: 2,
+                  width: 1.5,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
@@ -125,87 +125,46 @@ class _AddEventPageState extends State<AddEventPage> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/50),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 5,
-              fixedSize: Size(MediaQuery.of(context).size.width * 0.7, MediaQuery.of(context).size.height/15),
-              backgroundColor: AppColors.darkGreen,
-              side: BorderSide(
-                color: AppColors.darkGreen,
-                width: 1,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
-            onPressed: (){
-              actions(context);
-            },
-            child: Text(
-                'Adicionar',
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: MediaQuery.of(context).size.height/35,
-                  fontWeight: FontWeight.bold,
-                )
-            ),
-          ),
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height/50),
+          child: buttonText(Icons.mic, 'Adicionar áudio'),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height/50),
+          child: buttonText(Icons.attach_file, 'Adicionar imagem'),
         ),
       ],
     );
   }
-  actions(BuildContext context){
-    Text actionsText(String text){
-      return Text(
-          text,
-          style: TextStyle(
-            color: AppColors.darkGreen,
-            fontSize: MediaQuery.of(context).size.height/60,
-            fontWeight: FontWeight.bold,
-          )
-      );
-    }
 
-    buttonText(IconData icon, String text){
-      return ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          elevation: 5,
-          fixedSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height/15),
-          backgroundColor: AppColors.white,
-          side: BorderSide(
-            color: AppColors.darkGreen,
-            width: 1,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
+
+  Text actionsText(String text){
+    return Text(
+        text,
+        style: TextStyle(
+          color: AppColors.darkGreen,
+          fontSize: MediaQuery.of(context).size.height/60,
+          fontWeight: FontWeight.bold,
+        )
+    );
+  }
+
+  Widget buttonText(IconData icon, String text){
+    return ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        fixedSize: Size(MediaQuery.of(context).size.width/2, MediaQuery.of(context).size.height/15),
+        backgroundColor: AppColors.white,
+        side: BorderSide(
+          color: AppColors.darkGreen,
+          width: 1,
         ),
-        icon: Icon(icon, color: AppColors.darkGreen,),
-        onPressed: (){},
-        label: actionsText(text),
-      );
-    }
-
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            buttonText(Icons.check_circle_outline, 'Escolha única'),
-            buttonText(Icons.check_box_outlined, 'Escolha múltipla'),
-            buttonText(Icons.linear_scale_outlined, 'Escala'),
-            buttonText(Icons.edit_note, 'Pergunta simples'),
-            buttonText(Icons.text_fields, 'Relato'),
-            buttonText(Icons.mic, 'Áudio'),
-            buttonText(Icons.image, 'Imagem'),
-
-
-          ],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
         ),
-      )
+      ),
+      icon: Icon(icon, color: AppColors.darkGreen,),
+      onPressed: (){},
+      label: actionsText(text),
     );
   }
 }

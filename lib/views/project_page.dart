@@ -146,7 +146,9 @@ class _ProjectPageState extends State<ProjectPage> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: (){},
+      onPressed: (){
+        Navigator.pushNamed(context, '/add_event');
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
