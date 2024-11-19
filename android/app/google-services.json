@@ -59,10 +59,10 @@
               "client_type": 3
             },
             {
-              "client_id": "231627897335-5fjojncg6cuidnfe5ts80n8cll4qn5u2.apps.googleusercontent.com",
+              "client_id": "231627897335-293losvtat7stf0q90o0klnjgrd7m144.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "br.uff.vidacoletiva"
+                "bundle_id": "com.example.vidacoletiva"
               }
             }
           ]
@@ -90,10 +90,10 @@
               "client_type": 3
             },
             {
-              "client_id": "231627897335-5fjojncg6cuidnfe5ts80n8cll4qn5u2.apps.googleusercontent.com",
+              "client_id": "231627897335-293losvtat7stf0q90o0klnjgrd7m144.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "br.uff.vidacoletiva"
+                "bundle_id": "com.example.vidacoletiva"
               }
             }
           ]

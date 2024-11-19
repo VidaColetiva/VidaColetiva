@@ -91,6 +91,7 @@ class _EventsPageV2State extends State<EventsPageV2> {
                   ),
                 ),
                 onPressed: (){
+                  Navigator.pushNamed(context, '/add_event');
                 },
                 child: Text(
                     'Contribuir',

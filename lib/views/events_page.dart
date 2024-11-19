@@ -36,13 +36,9 @@ class _EventsPageState extends State<EventsPage> {
           children: [
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/20),
-                child: addEventButton(),
-              )
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/20),
-              child: eventCard(),
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/30),
+                child: eventCard(),
+              ),
             ),
           ],
         ),
@@ -50,11 +46,12 @@ class _EventsPageState extends State<EventsPage> {
     );
   }
 
-  Widget addEventButton(){
+
+  Widget eventCard(){
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.9, MediaQuery.of(context).size.height/10),
+        fixedSize: Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height/10),
         backgroundColor: AppColors.white,
         side: BorderSide(
           color: AppColors.darkGreen,
@@ -64,76 +61,34 @@ class _EventsPageState extends State<EventsPage> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: (){},
+      onPressed: (){
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width/8,
-            height: MediaQuery.of(context).size.width/8,
-            decoration: BoxDecoration(
-              color: AppColors.primaryGreen,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(Icons.add, color: AppColors.white, size: MediaQuery.of(context).size.width/10),
-          ),
-          Text(
-            'Criar um evento',
-            style: TextStyle(
-              color: AppColors.darkGreen,
-              fontSize: MediaQuery.of(context).size.height/35,
-            )
-          ),
-          Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen,)
-        ],
-      ),
-    );
-  }
-
-  Widget eventCard(){
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.black.withOpacity(0.2),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height/4,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: AssetImage('lib/resources/assets/images/stock-image.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height/50,
-                  left: MediaQuery.of(context).size.width/20
-              ),
-              child: Text(
-                  'Lorem Ipsum Event',
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                  '1. 29 de fevereiro, 24',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.height/25,
-                      fontWeight: FontWeight.bold
+                    color: AppColors.darkGreen,
+                    fontSize: MediaQuery.of(context).size.height/35,
+                    fontWeight: FontWeight.bold,
                   )
               ),
-            ),
-          )
+              Text(
+                  '2 mídias, 1 áudio e 1 relato',
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: MediaQuery.of(context).size.height/60,
+
+                  )
+              ),
+            ],
+          ),
+          Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen, size: MediaQuery.of(context).size.height/30,)
         ],
       ),
     );

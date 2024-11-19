@@ -1,0 +1,90 @@
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'event_model.dart';
+
+enum MediaDataType {
+  png, jpeg, gif, mp3, mp4,
+}
+
+class CreateMedia {
+  File? file;
+  XFile? imagePickerfile;
+  String mimeType;
+  late String fileName;
+  bool get isPickedFile {
+    return imagePickerfile != null;
+  }
+
+  CreateMedia(this.file, this.mimeType) {
+    fileName = file!.path.split('/').last;
+  }
+  CreateMedia.fromXFile(this.imagePickerfile, this.mimeType) {
+    fileName = imagePickerfile!.name;
+  }
+}
+
+class MediaModel {
+  EventModel event;
+  String? name;
+  String? userID;
+  MediaDataType? dataType;
+
+  MediaModel.fromJson(this.event, Map<String, dynamic> json) {
+    // counter = json["counter"]; 
+    switch (json["data_type"]) {
+      case "P":
+        dataType = MediaDataType.png;
+        break;
+      case "J":
+        dataType = MediaDataType.jpeg;
+        break;
+      case "G":
+        dataType = MediaDataType.gif;
+        break;
+      case "3":
+        dataType = MediaDataType.mp3;
+        break;
+      case "4":
+        dataType = MediaDataType.mp4;
+        break;
+      default:
+    }
+  }
+
+  MediaModel.fromFirebase(this.event, String name) {
+    List n = name.split('.');
+    this.name = name;
+    userID = event.userID;
+    dataType = dataTypeFromMime(n[1]);
+  }
+
+  static MediaDataType dataTypeFromMime(String mime) {
+    switch (mime) {
+      case "png":
+        return MediaDataType.png;
+      case "jpeg":
+      case "jpg":
+        return MediaDataType.jpeg;
+      case "gif":
+        return MediaDataType.gif;
+      case "mp3":
+        return MediaDataType.mp3;
+      case "mp4":
+        return MediaDataType.mp4;
+      default:
+        return MediaDataType.png;
+    }
+  }
+
+  Future<String> getUrl() {
+    return FirebaseStorage.instance.ref('$userID/${event.id}/$name').getDownloadURL();
+  }
+
+  Future<Uint8List?> getBytes() {
+    return FirebaseStorage.instance.ref('$userID/${event.id}/$name').getData();
+  }
+}

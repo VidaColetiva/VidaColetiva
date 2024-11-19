@@ -24,6 +24,10 @@ class _ProjectPageState extends State<ProjectPage> {
               child: aboutText(),
             ),
             myContributions(),
+            Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.height/30),
+              child: addEventButton(),
+            ),
           ],
         ),
       ),
@@ -123,6 +127,49 @@ class _ProjectPageState extends State<ProjectPage> {
               )
           ),
           Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen, size: MediaQuery.of(context).size.height/30,)
+        ],
+      ),
+    );
+  }
+
+  Widget addEventButton(){
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        fixedSize: Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height/13),
+        backgroundColor: AppColors.white,
+        side: BorderSide(
+          color: AppColors.darkGreen,
+          width: 1,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onPressed: (){
+        Navigator.pushNamed(context, '/add_event');
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width/12,
+            height: MediaQuery.of(context).size.width/12,
+            decoration: BoxDecoration(
+              color: AppColors.primaryGreen,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(Icons.add, color: AppColors.white, size: MediaQuery.of(context).size.width/12),
+          ),
+          Text(
+              'Contribuir',
+              style: TextStyle(
+                color: AppColors.darkGreen,
+                fontSize: MediaQuery.of(context).size.height/40,
+                fontWeight: FontWeight.bold,
+              )
+          ),
+          Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen,)
         ],
       ),
     );

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_bottom_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_bottom_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_drawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/add_event_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_event_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/add_project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_project_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,19 +58,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/joao/Desktop/STI/vidacoletiva/lib/resources/assets/images&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/home/joao/Desktop/STI/uffmobileplusplus",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/resources/assets/images" />
