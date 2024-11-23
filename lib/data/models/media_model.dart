@@ -7,7 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import 'event_model.dart';
 
 enum MediaDataType {
-  png, jpeg, gif, mp3, mp4,
+  png,
+  jpeg,
+  gif,
+  mp3,
+  mp4,
 }
 
 class CreateMedia {
@@ -34,7 +38,7 @@ class MediaModel {
   MediaDataType? dataType;
 
   MediaModel.fromJson(this.event, Map<String, dynamic> json) {
-    // counter = json["counter"]; 
+    // counter = json["counter"];
     switch (json["data_type"]) {
       case "P":
         dataType = MediaDataType.png;
@@ -81,7 +85,9 @@ class MediaModel {
   }
 
   Future<String> getUrl() {
-    return FirebaseStorage.instance.ref('$userID/${event.id}/$name').getDownloadURL();
+    return FirebaseStorage.instance
+        .ref('$userID/${event.id}/$name')
+        .getDownloadURL();
   }
 
   Future<Uint8List?> getBytes() {

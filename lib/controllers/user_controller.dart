@@ -4,9 +4,9 @@ import 'package:vidacoletiva/data/services/login_service.dart';
 
 class UserController extends ChangeNotifier {
   LoginService _loginService;
-  
+
   UserController(this._loginService);
-  
+
   bool isLogged = false;
   bool isLoading = true;
 
@@ -24,13 +24,19 @@ class UserController extends ChangeNotifier {
   loginGoogle() async {
     isLoading = true;
     notifyListeners();
-    var  acc = await _loginService.signInWithGoogle();
+    var acc = await _loginService.signInWithGoogle();
     isLoading = false;
     if (acc != null) {
       isLogged = true;
     } else {
       isLogged = false;
     }
+    notifyListeners();
+  }
+
+  logout() async {
+    isLogged = false;
+    await _loginService.signOut();
     notifyListeners();
   }
 }

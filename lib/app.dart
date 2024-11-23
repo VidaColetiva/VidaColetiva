@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/event_controller.dart';
+import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
+import 'package:vidacoletiva/views/add_project_page.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/events_page_v2.dart';
 import 'package:vidacoletiva/views/home_page.dart';
@@ -21,6 +23,8 @@ class VidaColetiva extends StatelessWidget {
               create: (_) => UserController(GetIt.I.get())..init()),
           ChangeNotifierProvider<EventController>(
               create: (_) => EventController(GetIt.I.get())..init()),
+          ChangeNotifierProvider<ProjectController>(
+              create: (_) => ProjectController(GetIt.I.get())..init()),
         ],
         builder: (context, child) {
           return MaterialApp(
@@ -36,6 +40,7 @@ class VidaColetiva extends StatelessWidget {
               '/events': (context) => const EventsPage(),
               '/project': (context) => const ProjectPage(),
               '/events_v2': (context) => const EventsPageV2(),
+              '/add_project': (context) => const AddProjectPage(),
             },
             // home: const RedirectionPage(),
           );

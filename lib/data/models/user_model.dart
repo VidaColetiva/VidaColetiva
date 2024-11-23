@@ -28,9 +28,10 @@ class UserModel {
     acceptedEulas = json['accepted_eulas'];
   }
 
-  UserModel.fromQueryDocumentSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> queryDocumentSnapshot) {
+  UserModel.fromQueryDocumentSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> queryDocumentSnapshot) {
     var json = queryDocumentSnapshot.data();
-    
+
     id = queryDocumentSnapshot.id;
     email = json['email'];
     gender = json['gender'];
@@ -43,10 +44,9 @@ class UserModel {
       bornAt = (json['born_at'] as Timestamp).toDate();
     }
     acceptedEulas = json['accepted_eulas'];
- 
   }
 
-  toJson(){
+  toJson() {
     Map<String, dynamic> json = {
       "email": email,
       "race": race,
