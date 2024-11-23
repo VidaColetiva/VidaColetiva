@@ -7,14 +7,12 @@ class EventRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<List<EventModel>> listMyEvents() async {
-    return _firebaseFirestore.collection('events')
-      .where('user_id', isEqualTo: _firebaseAuth.currentUser!.uid)
-      .get()
-      .then(
-        (value) => value.docs.map(
-          EventModel.fromQueryDocSnapshot
-        ).toList()
-      );
+    return _firebaseFirestore
+        .collection('events')
+        .where('user_id', isEqualTo: _firebaseAuth.currentUser!.uid)
+        .get()
+        .then((value) =>
+            value.docs.map(EventModel.fromQueryDocSnapshot).toList());
   }
 
   Future<EventModel> create(EventModel event) async {
@@ -22,7 +20,7 @@ class EventRepository {
         .collection('events')
         .add(event.toJson());
 
-    event.id = doc.id; 
+    event.id = doc.id;
     return event;
   }
 }

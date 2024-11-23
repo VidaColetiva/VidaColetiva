@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/event_controller.dart';
+import 'package:vidacoletiva/data/models/event_model.dart';
 import 'package:vidacoletiva/resources/widgets/main_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -13,8 +15,8 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
-  void bottomBarNav(int where){
-    switch(where){
+  void bottomBarNav(int where) {
+    switch (where) {
       case 0:
         break;
       case 1:
@@ -27,33 +29,35 @@ class _EventsPageState extends State<EventsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final eventController = Provider.of<EventController>(context);
+
     return Scaffold(
       appBar: mainAppBar(context),
       bottomNavigationBar: mainBottomBar(context, 0, bottomBarNav),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/30),
-                child: eventCard(),
-              ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 40,
             ),
-          ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [...eventController.events.map(eventCard)],
+            ),
+          ),
         ),
       ),
     );
   }
 
-
-  Widget eventCard(){
+  Widget eventCard(EventModel event) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height/10),
+        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
+            MediaQuery.of(context).size.height / 10),
         backgroundColor: AppColors.white,
-        side: BorderSide(
+        side: const BorderSide(
           color: AppColors.darkGreen,
           width: 1,
         ),
@@ -61,8 +65,7 @@ class _EventsPageState extends State<EventsPage> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: (){
-      },
+      onPressed: () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -70,25 +73,24 @@ class _EventsPageState extends State<EventsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                  '1. 29 de fevereiro, 24',
+              Text(event.title ?? 'Título do evento',
                   style: TextStyle(
                     color: AppColors.darkGreen,
-                    fontSize: MediaQuery.of(context).size.height/35,
+                    fontSize: MediaQuery.of(context).size.height / 35,
                     fontWeight: FontWeight.bold,
-                  )
-              ),
-              Text(
-                  '2 mídias, 1 áudio e 1 relato',
+                  )),
+              Text('${event.mediaModelList?.length} mídias',
                   style: TextStyle(
                     color: AppColors.grey,
-                    fontSize: MediaQuery.of(context).size.height/60,
-
-                  )
-              ),
+                    fontSize: MediaQuery.of(context).size.height / 60,
+                  )),
             ],
           ),
-          Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen, size: MediaQuery.of(context).size.height/30,)
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: AppColors.darkGreen,
+            size: MediaQuery.of(context).size.height / 30,
+          )
         ],
       ),
     );
