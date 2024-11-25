@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../assets/colour_pallete.dart';
 
 
-AppBar addAppBar(BuildContext context, String name){
+AppBar addAppBar(BuildContext context, String title){
   return AppBar(
     centerTitle: true,
     leading: IconButton(
@@ -13,7 +13,7 @@ AppBar addAppBar(BuildContext context, String name){
     ),
     toolbarHeight: MediaQuery.of(context).size.height/9,
     title: Text(
-      'Criar um $name',
+      title,
       style: TextStyle(
         color: AppColors.white,
         fontSize: MediaQuery.of(context).size.height/35,
