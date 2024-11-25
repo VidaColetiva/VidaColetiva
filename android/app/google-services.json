@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "231627897335",
+    "project_id": "vida-coletiva-736b4",
+    "storage_bucket": "vida-coletiva-736b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231627897335:android:70fec109b453a527e096f2",
+        "android_client_info": {
+          "package_name": "br.uff.vidacoletiva"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231627897335-cjv7nj7q0n20ceo05bfugmn7tjg3jksf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.uff.vidacoletiva",
+            "certificate_hash": "533ea697d517a6073308d7afe32fa77bcc5a78ea"
+          }
+        },
+        {
+          "client_id": "231627897335-jhcsft0et5kmr4nk9l9fkah551tdj6vl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.uff.vidacoletiva",
+            "certificate_hash": "612bdcef902c631277b55c0feb040782be136cf2"
+          }
+        },
+        {
+          "client_id": "231627897335-k8fjoiaj9fku0tg9reh8o96d1km3dsfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.uff.vidacoletiva",
+            "certificate_hash": "b7411390a84c1c8764c13505e56fc70cb509c372"
+          }
+        },
+        {
+          "client_id": "231627897335-pjdji152b8f6i45pnip0j034pfm3tmvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.uff.vidacoletiva",
+            "certificate_hash": "e2cd60280c070d3830f6ad85c71867f808feba5c"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyColhPWf2XP6LiCd8Ptlz5YbqtTs5yDG34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231627897335-lnl8gv5jon8ms2500qa11g7tn7gpn7aj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "231627897335-293losvtat7stf0q90o0klnjgrd7m144.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vidacoletiva"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231627897335:android:95a1b251df0a9288e096f2",
+        "android_client_info": {
+          "package_name": "com.example.vidacoletiva"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyColhPWf2XP6LiCd8Ptlz5YbqtTs5yDG34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231627897335-lnl8gv5jon8ms2500qa11g7tn7gpn7aj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "231627897335-293losvtat7stf0q90o0klnjgrd7m144.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vidacoletiva"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
