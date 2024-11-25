@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/data/models/project_model.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 
@@ -52,9 +54,14 @@ class ProjectsCarousel extends StatelessWidget {
 
   Widget projectCard(
       ProjectModel projectModel, Color containerColor, BuildContext context) {
+    ProjectController projectController =
+        Provider.of<ProjectController>(context, listen: false);
     return SizedBox(
       child: GestureDetector(
-        onTap: () => Navigator.pushNamed(context, '/project'),
+        onTap: () {
+          projectController.selectedProject(projectModel);
+          Navigator.pushNamed(context, '/project');
+        },
         child: Container(
           width: MediaQuery.of(context).size.width / 2.5,
           height: MediaQuery.of(context).size.height / 6,
