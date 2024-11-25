@@ -14,7 +14,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: addAppBar(context, 'projeto'),
+      appBar: addAppBar(context, 'Criar um projeto'),
       body: SingleChildScrollView(
         child: Column(
           children: [

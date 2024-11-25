@@ -56,7 +56,7 @@ Widget mainDrawer(BuildContext context){
             ],
           ),
         ),
-        textButton('Perfil', (){}),
+        textButton('Perfil', (){Navigator.pushNamed(context, '/profile');}),
         textButton('Preferências', (){}),
         textButton('Sobre o app', (){}),
         textButton('Termos legais', (){}),
