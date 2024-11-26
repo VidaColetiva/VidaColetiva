@@ -79,7 +79,7 @@ class _EventsPageState extends State<EventsPage> {
                     fontSize: MediaQuery.of(context).size.height / 35,
                     fontWeight: FontWeight.bold,
                   )),
-              Text('${event.mediaModelList?.length} mídias',
+              Text('${event.mediaModelList?.length ?? 0} mídias',
                   style: TextStyle(
                     color: AppColors.grey,
                     fontSize: MediaQuery.of(context).size.height / 60,

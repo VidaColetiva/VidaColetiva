@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -11,17 +13,23 @@ class AddEventPage extends StatefulWidget {
 }
 
 class _AddEventPageState extends State<AddEventPage> {
+  String? _title;
+  String? description;
+
   @override
   Widget build(BuildContext context) {
+    final ProjectController projectController =
+        Provider.of<ProjectController>(context);
+
     return Scaffold(
       appBar: addAppBar(context, 'Criar um relato'),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            leadingImage(),
+            leadingImage(projectController),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-              child: addEventForm(),
+              child: addEventForm(projectController),
             ),
           ],
         ),
@@ -29,12 +37,12 @@ class _AddEventPageState extends State<AddEventPage> {
     );
   }
 
-  Widget leadingImage() {
+  Widget leadingImage(ProjectController projectController) {
     return Stack(
       children: [
         Container(
           height: MediaQuery.of(context).size.height / 3.5,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('lib/resources/assets/images/stock-image.png'),
               fit: BoxFit.cover,
@@ -49,7 +57,7 @@ class _AddEventPageState extends State<AddEventPage> {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).size.height / 50,
                 left: MediaQuery.of(context).size.width / 20),
-            child: Text('Project Name',
+            child: Text(projectController.project!.name ?? "Projeto sem nome",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.height / 25,
@@ -60,10 +68,13 @@ class _AddEventPageState extends State<AddEventPage> {
     );
   }
 
-  Widget addEventForm() {
+  Widget addEventForm(ProjectController projectController) {
     return Column(
       children: [
         TextFormField(
+          onChanged: (value) {
+            // projectController.project!.name = value;
+          },
           cursorColor: AppColors.darkGreen,
           style: TextStyle(
             color: AppColors.darkGreen,
@@ -75,13 +86,13 @@ class _AddEventPageState extends State<AddEventPage> {
               color: AppColors.darkGreen,
               fontSize: MediaQuery.of(context).size.height / 40,
             ),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: AppColors.darkGreen,
                 width: 1.5,
               ),
             ),
-            enabledBorder: OutlineInputBorder(
+            enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: AppColors.darkGreen,
                 width: 1,
@@ -105,13 +116,13 @@ class _AddEventPageState extends State<AddEventPage> {
                 color: AppColors.darkGreen,
                 fontSize: MediaQuery.of(context).size.height / 40,
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: AppColors.darkGreen,
                   width: 1.5,
                 ),
               ),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: AppColors.darkGreen,
                   width: 1,
@@ -150,7 +161,7 @@ class _AddEventPageState extends State<AddEventPage> {
         fixedSize: Size(MediaQuery.of(context).size.width / 2,
             MediaQuery.of(context).size.height / 15),
         backgroundColor: AppColors.white,
-        side: BorderSide(
+        side: const BorderSide(
           color: AppColors.darkGreen,
           width: 1,
         ),

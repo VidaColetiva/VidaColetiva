@@ -99,7 +99,7 @@ class _ProjectPageState extends State<ProjectPage> {
         fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
             MediaQuery.of(context).size.height / 13),
         backgroundColor: AppColors.white,
-        side: BorderSide(
+        side: const BorderSide(
           color: AppColors.darkGreen,
           width: 1,
         ),
@@ -111,7 +111,7 @@ class _ProjectPageState extends State<ProjectPage> {
         Navigator.pushNamed(context, '/events_v2');
       },
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Minhas contribuições',
               style: TextStyle(
@@ -136,7 +136,7 @@ class _ProjectPageState extends State<ProjectPage> {
         fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
             MediaQuery.of(context).size.height / 13),
         backgroundColor: AppColors.white,
-        side: BorderSide(
+        side: const BorderSide(
           color: AppColors.darkGreen,
           width: 1,
         ),
@@ -165,7 +165,7 @@ class _ProjectPageState extends State<ProjectPage> {
                 fontSize: MediaQuery.of(context).size.height / 40,
                 fontWeight: FontWeight.bold,
               )),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios_rounded,
             color: AppColors.darkGreen,
           )

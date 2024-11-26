@@ -20,23 +20,22 @@ class _EventsPageV2State extends State<EventsPageV2> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/30),
-              child: Text(
-                  'Minhas contribuições',
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height / 30),
+              child: Text('Minhas contribuições',
                   style: TextStyle(
                     color: AppColors.darkGreen,
-                    fontSize: MediaQuery.of(context).size.height/30,
+                    fontSize: MediaQuery.of(context).size.height / 30,
                     fontWeight: FontWeight.bold,
-                  )
-              ),
+                  )),
             ),
-
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 5,
-                fixedSize: Size(MediaQuery.of(context).size.width * 0.8, MediaQuery.of(context).size.height/10),
+                fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
+                    MediaQuery.of(context).size.height / 10),
                 backgroundColor: AppColors.white,
-                side: BorderSide(
+                side: const BorderSide(
                   color: AppColors.darkGreen,
                   width: 1,
                 ),
@@ -44,8 +43,7 @@ class _EventsPageV2State extends State<EventsPageV2> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              onPressed: (){
-              },
+              onPressed: () {},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -53,36 +51,37 @@ class _EventsPageV2State extends State<EventsPageV2> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                          '1. 29 de fevereiro, 24',
+                      Text('1. 29 de fevereiro, 24',
                           style: TextStyle(
                             color: AppColors.darkGreen,
-                            fontSize: MediaQuery.of(context).size.height/35,
+                            fontSize: MediaQuery.of(context).size.height / 35,
                             fontWeight: FontWeight.bold,
-                          )
-                      ),
-                      Text(
-                          '2 mídias, 1 áudio e 1 relato',
+                          )),
+                      Text('2 mídias, 1 áudio e 1 relato',
                           style: TextStyle(
                             color: AppColors.grey,
-                            fontSize: MediaQuery.of(context).size.height/60,
-
-                          )
-                      ),
+                            fontSize: MediaQuery.of(context).size.height / 60,
+                          )),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios_rounded, color: AppColors.darkGreen, size: MediaQuery.of(context).size.height/30,)
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: AppColors.darkGreen,
+                    size: MediaQuery.of(context).size.height / 30,
+                  )
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/2),
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 2),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
-                  fixedSize: Size(MediaQuery.of(context).size.width * 0.7, MediaQuery.of(context).size.height/15),
+                  fixedSize: Size(MediaQuery.of(context).size.width * 0.7,
+                      MediaQuery.of(context).size.height / 15),
                   backgroundColor: AppColors.darkGreen,
-                  side: BorderSide(
+                  side: const BorderSide(
                     color: AppColors.darkGreen,
                     width: 1,
                   ),
@@ -90,26 +89,20 @@ class _EventsPageV2State extends State<EventsPageV2> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                 ),
-                onPressed: (){
+                onPressed: () {
                   Navigator.pushNamed(context, '/add_event');
                 },
-                child: Text(
-                    'Contribuir',
+                child: Text('Contribuir',
                     style: TextStyle(
                       color: AppColors.white,
-                      fontSize: MediaQuery.of(context).size.height/35,
+                      fontSize: MediaQuery.of(context).size.height / 35,
                       fontWeight: FontWeight.bold,
-                    )
-                ),
+                    )),
               ),
             ),
-
           ],
         ),
       ),
-
     );
   }
-
-
 }
