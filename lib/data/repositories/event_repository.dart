@@ -16,9 +16,9 @@ class EventRepository {
   }
 
   Future<EventModel> create(EventModel event) async {
-    var doc = await FirebaseFirestore.instance
-        .collection('events')
-        .add(event.toJson());
+    event.userID = _firebaseAuth.currentUser!.uid;
+    event.createdAt = DateTime.now();
+    var doc = await _firebaseFirestore.collection('events').add(event.toJson());
 
     event.id = doc.id;
     return event;

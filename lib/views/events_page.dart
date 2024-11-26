@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/event_controller.dart';
-import 'package:vidacoletiva/data/models/event_model.dart';
 import 'package:vidacoletiva/resources/widgets/main_app_bar.dart';
+import 'package:vidacoletiva/views/events/event_card.dart';
 
-import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_bottom_bar.dart';
 
 class EventsPage extends StatefulWidget {
@@ -42,56 +41,12 @@ class _EventsPageState extends State<EventsPage> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [...eventController.events.map(eventCard)],
+              children: [
+                ...eventController.events.map((e) => EventCard(event: e))
+              ],
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget eventCard(EventModel event) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
-            MediaQuery.of(context).size.height / 10),
-        backgroundColor: AppColors.white,
-        side: const BorderSide(
-          color: AppColors.darkGreen,
-          width: 1,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(event.title ?? 'Título do evento',
-                  style: TextStyle(
-                    color: AppColors.darkGreen,
-                    fontSize: MediaQuery.of(context).size.height / 35,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Text('${event.mediaModelList?.length ?? 0} mídias',
-                  style: TextStyle(
-                    color: AppColors.grey,
-                    fontSize: MediaQuery.of(context).size.height / 60,
-                  )),
-            ],
-          ),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: AppColors.darkGreen,
-            size: MediaQuery.of(context).size.height / 30,
-          )
-        ],
       ),
     );
   }

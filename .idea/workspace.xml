@@ -10,14 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/assets/colour_pallete.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/main_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/main_drawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/add_event_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_event_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/add_project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_project_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/events_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/events_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/project_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vidacoletiva.iml" beforeDir="false" afterPath="$PROJECT_DIR$/vidacoletiva.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +50,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2nkXtNbrDsOg3vSLHC08F3f1Y94" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
@@ -64,11 +71,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "view__project",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/home/joao/Desktop/STI/vidacoletiva",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/victor-sant-ana/sti/vidacoletiva",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>

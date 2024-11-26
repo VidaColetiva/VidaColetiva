@@ -65,7 +65,7 @@ Widget mainDrawer(BuildContext context) {
         textButton('Termos legais', context, () {}),
         textButton('Avaliar app', context, () {}),
         textButton('Sair', context, () async {
-          userController.logout();
+          await userController.logout();
         }),
       ],
     ),

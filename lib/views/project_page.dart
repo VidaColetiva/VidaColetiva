@@ -108,7 +108,7 @@ class _ProjectPageState extends State<ProjectPage> {
         ),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/events_v2');
+        Navigator.pushNamed(context, '/my_contributions');
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

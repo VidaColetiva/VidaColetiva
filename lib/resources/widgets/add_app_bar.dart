@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import '../assets/colour_pallete.dart';
 
-
-AppBar addAppBar(BuildContext context, String title){
+AppBar addAppBar(BuildContext context, String title,
+    {void Function()? onPressed, void Function()? onBeforeNavigateBack}) {
   return AppBar(
     centerTitle: true,
     leading: IconButton(
       icon: const Icon(Icons.close),
-      iconSize: MediaQuery.of(context).size.height/25,
+      iconSize: MediaQuery.of(context).size.height / 25,
       color: AppColors.white,
-      onPressed: (){Navigator.pop(context);},
+      onPressed: () {
+        onBeforeNavigateBack?.call();
+        Navigator.pop(context);
+      },
     ),
-    toolbarHeight: MediaQuery.of(context).size.height/9,
+    toolbarHeight: MediaQuery.of(context).size.height / 9,
     title: Text(
       title,
       style: TextStyle(
         color: AppColors.white,
-        fontSize: MediaQuery.of(context).size.height/35,
+        fontSize: MediaQuery.of(context).size.height / 35,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -24,11 +27,10 @@ AppBar addAppBar(BuildContext context, String title){
     actions: [
       IconButton(
         icon: const Icon(Icons.check),
-        iconSize: MediaQuery.of(context).size.height/25,
+        iconSize: MediaQuery.of(context).size.height / 25,
         color: AppColors.white,
-        onPressed: (){},
+        onPressed: onPressed,
       ),
-
     ],
   );
 }

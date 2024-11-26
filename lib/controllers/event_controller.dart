@@ -18,4 +18,21 @@ class EventController extends ChangeNotifier {
     debugPrint('events: ${events.length}');
     notifyListeners();
   }
+
+  List<EventModel> getEventsOnProject(String projectId) {
+    var e = events.where((ev) => ev.projectId == projectId).toList();
+    return e;
+  }
+
+  Future createEvent(String title, String description, String projectId) async {
+    EventModel e = await eventService.addEvent(
+        EventModel(
+          title: title,
+          text: description,
+          projectId: projectId,
+        ),
+        []);
+    events.add(e);
+    // await listOwnEvents();
+  }
 }
