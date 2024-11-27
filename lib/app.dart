@@ -10,6 +10,8 @@ import 'package:vidacoletiva/views/add_project_page.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/home_page.dart';
 import 'package:vidacoletiva/views/my_contributions_page.dart';
+import 'package:vidacoletiva/views/profile_data.dart';
+import 'package:vidacoletiva/views/profile_page.dart';
 import 'package:vidacoletiva/views/project_page.dart';
 import 'package:vidacoletiva/views/redirection_page.dart';
 
@@ -43,6 +45,8 @@ class VidaColetiva extends StatelessWidget {
               '/my_contributions': (context) => const MyContributionsPage(),
               '/add_project': (context) => const AddProjectPage(),
               '/add_event': (context) => const AddEventPage(),
+              '/profile': (context) => const ProfilePage(),
+              '/profile_data': (context) => const ProfileData(),
             },
             // home: const RedirectionPage(),
           );

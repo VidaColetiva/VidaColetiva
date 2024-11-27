@@ -33,6 +33,7 @@ class EventController extends ChangeNotifier {
         ),
         []);
     events.add(e);
+    notifyListeners();
     // await listOwnEvents();
   }
 }
