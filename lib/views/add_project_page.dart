@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -11,6 +14,18 @@ class AddProjectPage extends StatefulWidget {
 }
 
 class _AddProjectPageState extends State<AddProjectPage> {
+  File? selectedImage;
+
+  Future pickImageFromGallery() async {
+    final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (returnedImage == null) return;
+
+    setState(() {
+      selectedImage = File(returnedImage.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +80,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
   Widget formImage(){
     return Stack(
       children: [
+        selectedImage == null ?
         Container(
           height: MediaQuery.of(context).size.height/3.5,
           decoration: BoxDecoration(
@@ -83,13 +99,33 @@ class _AddProjectPageState extends State<AddProjectPage> {
               ),
             ],
           ),
+        ) :
+        Container(
+          height: MediaQuery.of(context).size.height/3.5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            image: DecorationImage(
+              image: FileImage(selectedImage!),
+              fit: BoxFit.cover,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(5, 5), // changes position of shadow
+              ),
+            ],
+          ),
         ),
         Positioned(
           right: 0,
           child: IconButton(
             icon: Icon(Icons.image_outlined),
             color: AppColors.white,
-            onPressed: () {  },),
+            onPressed: () {
+              pickImageFromGallery();
+            },),
         ),
         Positioned(
           bottom: 10,
@@ -98,12 +134,14 @@ class _AddProjectPageState extends State<AddProjectPage> {
           child: Padding(
             padding: EdgeInsets.all(MediaQuery.of(context).size.height/50,),
             child: TextFormField(
+              selectionControls: MaterialTextSelectionControls(),
               cursorColor: AppColors.white,
               style: TextStyle(
                 color: AppColors.white,
                 fontSize: MediaQuery.of(context).size.height/30,
               ),
               decoration: InputDecoration(
+                floatingLabelBehavior: FloatingLabelBehavior.never,
                 labelText: 'Título do projeto',
                 labelStyle: TextStyle(
                   color: AppColors.white,

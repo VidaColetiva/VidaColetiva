@@ -23,6 +23,10 @@ class VidaColetiva extends StatelessWidget {
       title: 'Vida Coletiva',
       theme: ThemeData(
         primaryColor: AppColors.primaryOrange,
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: AppColors.white,
+          selectionHandleColor: AppColors.white
+        ),
       ),
       initialRoute: '/home',
       routes: {
