@@ -1,4 +1,4 @@
-package com.example.vidacoletiva
+package br.uff.vidacoletiva
 
 import io.flutter.embedding.android.FlutterActivity
 

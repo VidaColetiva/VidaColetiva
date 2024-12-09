@@ -25,5 +25,7 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
-*.jks
+
 .idea/
+*.jks
+android/key.properties
