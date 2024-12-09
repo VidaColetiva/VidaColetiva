@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/event_model.dart';
+import 'package:vidacoletiva/data/models/media_model.dart';
 import 'package:vidacoletiva/data/services/event_service.dart';
 
 class EventController extends ChangeNotifier {
@@ -24,14 +25,14 @@ class EventController extends ChangeNotifier {
     return e;
   }
 
-  Future createEvent(String title, String description, String projectId) async {
+  Future createEvent(String title, String description, String projectId, List<CreateMedia> mediaList) async {
     EventModel e = await eventService.addEvent(
         EventModel(
           title: title,
           text: description,
           projectId: projectId,
         ),
-        []);
+        mediaList);
     events.add(e);
     notifyListeners();
     // await listOwnEvents();

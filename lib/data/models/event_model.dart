@@ -26,10 +26,9 @@ class EventModel {
       "created_at": createdAt,
       "user_id": userID,
       "project_id": projectId,
+      if (mediaModelList != null) "media": mediaModelList,
+      if (id != null) "id": id,
     };
-    if (id != null) {
-      json["id"] = id;
-    }
     return json;
   }
 
