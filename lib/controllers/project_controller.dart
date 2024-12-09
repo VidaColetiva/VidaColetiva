@@ -7,6 +7,7 @@ class ProjectController extends ChangeNotifier {
 
   ProjectController(this.projectService);
 
+  ProjectModel? project;
   List<ProjectModel> projects = [];
 
   init() async {
@@ -16,6 +17,11 @@ class ProjectController extends ChangeNotifier {
   Future listProjects() async {
     projects = await projectService.listProjects();
     debugPrint('events: ${projects.length}');
+    notifyListeners();
+  }
+
+  selectedProject(ProjectModel project) {
+    this.project = project;
     notifyListeners();
   }
 }

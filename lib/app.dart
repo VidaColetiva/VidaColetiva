@@ -5,10 +5,13 @@ import 'package:vidacoletiva/controllers/event_controller.dart';
 import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
+import 'package:vidacoletiva/views/add_event_page.dart';
 import 'package:vidacoletiva/views/add_project_page.dart';
 import 'package:vidacoletiva/views/events_page.dart';
-import 'package:vidacoletiva/views/events_page_v2.dart';
 import 'package:vidacoletiva/views/home_page.dart';
+import 'package:vidacoletiva/views/my_contributions_page.dart';
+import 'package:vidacoletiva/views/profile_data.dart';
+import 'package:vidacoletiva/views/profile_page.dart';
 import 'package:vidacoletiva/views/project_page.dart';
 import 'package:vidacoletiva/views/redirection_page.dart';
 
@@ -39,8 +42,11 @@ class VidaColetiva extends StatelessWidget {
               '/home': (context) => const HomePage(),
               '/events': (context) => const EventsPage(),
               '/project': (context) => const ProjectPage(),
-              '/events_v2': (context) => const EventsPageV2(),
+              '/my_contributions': (context) => const MyContributionsPage(),
               '/add_project': (context) => const AddProjectPage(),
+              '/add_event': (context) => const AddEventPage(),
+              '/profile': (context) => const ProfilePage(),
+              '/profile_data': (context) => const ProfileData(),
             },
             // home: const RedirectionPage(),
           );

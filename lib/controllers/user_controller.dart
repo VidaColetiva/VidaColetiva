@@ -3,7 +3,7 @@ import 'package:vidacoletiva/data/models/user_model.dart';
 import 'package:vidacoletiva/data/services/login_service.dart';
 
 class UserController extends ChangeNotifier {
-  LoginService _loginService;
+  final LoginService _loginService;
 
   UserController(this._loginService);
 

@@ -11,20 +11,19 @@ class EventModel {
   List<MediaModel>? mediaModelList;
   List<String>? mediaList;
 
-  EventModel({
-    required this.id,
-    required this.title,
-    required this.text,
-    required this.createdAt,
-    required this.userID,
-    required this.projectId
-  });
+  EventModel(
+      {this.id,
+      this.title,
+      this.text,
+      this.createdAt,
+      this.userID,
+      this.projectId});
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> json = {
       "title": title,
       "text": text,
-      "created_at": createdAt.toString(),
+      "created_at": createdAt,
       "user_id": userID,
       "project_id": projectId,
     };
@@ -43,14 +42,15 @@ class EventModel {
     projectId = "${json["project_id"]}";
     if (json["media"] != null) {
       List<MediaModel> l = [];
-      for(var m in json["media"]) {
+      for (var m in json["media"]) {
         l.add(MediaModel.fromJson(this, m));
       }
       mediaModelList = l;
     }
   }
 
-  EventModel.fromQueryDocSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> qds) {
+  EventModel.fromQueryDocSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> qds) {
     id = qds.id;
     Map data = qds.data();
     title = data['title'];

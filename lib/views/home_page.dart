@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   void bottomBarNav(int where) {
     switch (where) {
       case 0:
@@ -31,8 +33,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
     return Scaffold(
       key: scaffoldKey,
       appBar: mainAppBar(context, scaffoldKey: scaffoldKey),
@@ -133,29 +133,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget myProjectContributions() {
-    return Column(
-      children: [
-        Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height / 50,
-                left: MediaQuery.of(context).size.width / 10,
-              ),
-              child: Text('Meus projetos',
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height / 30,
-                      fontWeight: FontWeight.bold)),
-            )),
-        Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 15),
-          child: const ProjectsCarousel(
-            cardColor: AppColors.secondaryYellow,
-            projectModel: [],
-          ),
-        ),
-      ],
-    );
+    return const SizedBox();
+    // return Column(
+    //   children: [
+    //     Align(
+    //         alignment: Alignment.centerLeft,
+    //         child: Padding(
+    //           padding: EdgeInsets.only(
+    //             bottom: MediaQuery.of(context).size.height / 50,
+    //             left: MediaQuery.of(context).size.width / 10,
+    //           ),
+    //           child: Text('Meus projetos',
+    //               style: TextStyle(
+    //                   fontSize: MediaQuery.of(context).size.height / 30,
+    //                   fontWeight: FontWeight.bold)),
+    //         )),
+    //     Padding(
+    //       padding:
+    //           EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 15),
+    //       child: const ProjectsCarousel(
+    //         cardColor: AppColors.secondaryYellow,
+    //         projectModel: [],
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 }
