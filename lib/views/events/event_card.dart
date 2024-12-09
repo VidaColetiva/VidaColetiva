@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/event_model.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
+import 'package:vidacoletiva/views/event_page.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({
@@ -28,7 +29,14 @@ class EventCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventPage(event: event),
+            ),
+          );
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
