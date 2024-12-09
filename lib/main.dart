@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 import 'package:vidacoletiva/views/add_event_page.dart';
 import 'package:vidacoletiva/views/add_project_page.dart';
+import 'package:vidacoletiva/views/edit_profile_data.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/events_page_v2.dart';
 import 'package:vidacoletiva/views/home_page.dart';
@@ -38,6 +39,7 @@ class VidaColetiva extends StatelessWidget {
         '/add_project': (context) => const AddProjectPage(),
         '/profile': (context) => const ProfilePage(),
         '/profile_data': (context) => const ProfileData(),
+        '/edit_profile': (context) => const EditProfileData(),
       },
     );
   }
