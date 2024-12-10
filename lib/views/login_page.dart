@@ -55,8 +55,10 @@ class LoginPage extends StatelessWidget {
           if (!context.mounted) {
             return;
           }
-          await Provider.of<UserController>(context, listen: false).loginGoogle();
-          Provider.of<EventController>(context, listen: false).listOwnEvents();
+          UserController u =Provider.of<UserController>(context, listen: false);
+          EventController e = Provider.of<EventController>(context, listen: false);
+          await u.loginGoogle();
+          e.listOwnEvents();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryGreen,
