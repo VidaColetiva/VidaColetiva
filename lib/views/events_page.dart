@@ -62,6 +62,7 @@ class _EventsPageState extends State<EventsPage> {
         ),
       ),
       onPressed: (){
+        Navigator.pushNamed(context, '/event');
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

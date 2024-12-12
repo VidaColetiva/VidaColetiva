@@ -49,9 +49,9 @@ class _EditProfileDataState extends State<EditProfileData> {
                 }
               },
             ),
-            dropdownMenu('Cidade', ['a','b','c'], context),
-            dropdownMenu('Identidade étnico-racial', ['a','b','c'], context),
-            dropdownMenu('Gênero', ['a','b','c'], context),
+            dropdownMenu('Cidade', [], context),
+            dropdownMenu('Identidade étnico-racial', ['Branco', 'Preto', 'Indígena', 'Pardo', 'Amarelo/ Asiático'], context),
+            dropdownMenu('Gênero', ['Mulher cisgênero', 'Homem cisgênero', 'Outro', 'Prefiro não declarar'], context),
           ],
         ),
       ),

@@ -59,7 +59,7 @@ class _ProfileDataState extends State<ProfileData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: addAppBar(context, 'Perfil', isEdit: true, editFunction: (){Navigator.pushNamed(context, '/edit_profile');}),
+      appBar: addAppBar(context, 'Perfil', isEdit: true, editFunction: (){}),
       body: SingleChildScrollView(
         child: Column(
           children: [

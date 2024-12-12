@@ -11,12 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/resources/widgets/add_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/profile_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/profile_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/edit_profile_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/edit_profile_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/events_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/events_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
