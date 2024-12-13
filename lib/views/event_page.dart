@@ -17,7 +17,10 @@ class EventPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(event.title ?? "", style: const TextStyle(color: Colors.white),),
+        title: Text(
+          event.title ?? "",
+          style: const TextStyle(color: Colors.white),
+        ),
         backgroundColor: AppColors.primaryOrange,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -70,45 +73,45 @@ class EventPage extends StatelessWidget {
           enableInfiniteScroll: false,
           clipBehavior: Clip.hardEdge,
         ),
-        items: [
-          ...event.mediaModelList!.map((e) => carouselImage(context, e))
-        ]);
+        items: (event.mediaModelList != null &&
+                event.mediaModelList!.isNotEmpty)
+            ? [...event.mediaModelList!.map((e) => carouselImage(context, e))]
+            : []);
   }
 
   Widget carouselImage(BuildContext context, MediaModel media) {
     return FutureBuilder<String>(
-      future: media.getUrl(),
-      builder: (context, snapshot) {
-        return Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    snapshot.data.toString(),
-                  ),// AssetImage('lib/resources/assets/images/stock-image.png'),
-                  fit: BoxFit.cover,
+        future: media.getUrl(),
+        builder: (context, snapshot) {
+          return Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      snapshot.data.toString(),
+                    ), // AssetImage('lib/resources/assets/images/stock-image.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              bottom: 10,
-              left: 0,
-              right: 0,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).size.height / 50,
-                    left: MediaQuery.of(context).size.width / 20),
-                child: Text('Project Name',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height / 25,
-                        fontWeight: FontWeight.bold)),
-              ),
-            )
-          ],
-        );
-      }
-    );
+              Positioned(
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.height / 50,
+                      left: MediaQuery.of(context).size.width / 20),
+                  child: Text('Project Name',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.height / 25,
+                          fontWeight: FontWeight.bold)),
+                ),
+              )
+            ],
+          );
+        });
   }
 }

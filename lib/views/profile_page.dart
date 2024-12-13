@@ -42,20 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: AppColors.primaryGreen,
                     size: MediaQuery.of(context).size.height / 5)),
             Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 30),
-              child: Text(
-                'ALTERAR FOTO DE PERFIL',
-                style: TextStyle(
-                    color: AppColors.darkGreen,
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.height / 50),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 20,
-                  vertical: MediaQuery.of(context).size.height / 60),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/20, vertical: MediaQuery.of(context).size.height/25),
               child: TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/profile_data');
