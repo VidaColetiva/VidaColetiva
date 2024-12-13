@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
-import 'package:vidacoletiva/resources/widgets/main_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
 
@@ -22,37 +21,42 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/30),
+                padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height / 30),
                 child: Text(
                   'Fulano da Silva',
-                  style: TextStyle(color: AppColors.darkGreen, fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.height/30),
+                  style: TextStyle(
+                      color: AppColors.darkGreen,
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.height / 30),
                 ),
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                border: Border.all(color: AppColors.primaryGreen, width: 2),
-                borderRadius: BorderRadius.circular(100),
-              ),
-
-              child: Icon(Icons.person_outline_rounded, color: AppColors.primaryGreen, size: MediaQuery.of(context).size.height/5)),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  border: Border.all(color: AppColors.primaryGreen, width: 2),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Icon(Icons.person_outline_rounded,
+                    color: AppColors.primaryGreen,
+                    size: MediaQuery.of(context).size.height / 5)),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/20, vertical: MediaQuery.of(context).size.height/25),
               child: TextButton(
-                onPressed: (){Navigator.pushNamed(context, '/profile_data');},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile_data');
+                },
                 style: TextButton.styleFrom(
-                  fixedSize: Size(MediaQuery.of(context).size.width/1.5, MediaQuery.of(context).size.height/15),
+                  fixedSize: Size(MediaQuery.of(context).size.width / 1.5,
+                      MediaQuery.of(context).size.height / 15),
                   backgroundColor: AppColors.primaryOrange,
                 ),
-                child: Text(
-                    'Meus dados',
+                child: Text('Meus dados',
                     style: TextStyle(
                         color: AppColors.white,
-                        fontSize: MediaQuery.of(context).size.height/40,
-                        fontWeight: FontWeight.bold
-                    )
-                ),
+                        fontSize: MediaQuery.of(context).size.height / 40,
+                        fontWeight: FontWeight.bold)),
               ),
             ),
           ],
@@ -60,5 +64,4 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-
 }
