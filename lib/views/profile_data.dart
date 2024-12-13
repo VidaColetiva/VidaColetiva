@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../controllers/user_controller.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/add_app_bar.dart';
 
@@ -58,18 +60,33 @@ class _ProfileDataState extends State<ProfileData> {
 
   @override
   Widget build(BuildContext context) {
+    final UserController userController = Provider.of<UserController>(context);
+
     return Scaffold(
       appBar: addAppBar(context, 'Perfil', isEdit: true, editFunction: (){}),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            displayInfo('Nome completo', 'Fulano da Silva Santos', context),
-            displayInfo('Profissão', 'Pescador', context),
-            displayInfo('Nascimento', '00/00/0000', context),
-            displayInfo('Estado', 'Rio de Janeiro', context),
-            displayInfo('Cidade', 'Niterói', context),
-            displayInfo('Identidade étnico-racial', 'Branco', context),
-            displayInfo('Gênero', 'Homem cis', context),
+            displayInfo('Email', userController.user!.email ?? 'Não informado', context),
+            displayInfo('Profissão', userController.user!.occupation ?? 'Não informado', context),
+            displayInfo(
+              'Nascimento',
+              userController.user!.bornAt != null ?
+              '${userController.user!.bornAt!.day}/'
+              ' ${userController.user!.bornAt!.month}/'
+              ' ${userController.user!.bornAt!.year}' :
+              'Não informado',
+              context
+            ),
+            displayInfo('Estado', userController.user!.state ?? 'Não informado', context),
+            displayInfo(
+              'Cidade',
+              userController.user!.county != null ?
+              userController.user!.county.toString() :
+              'Não informado',
+              context),
+            displayInfo('Identidade étnico-racial', userController.user!.race ?? 'Não informado', context),
+            displayInfo('Gênero', userController.user!.gender ?? 'Não informado', context),
           ],
         ),
       ),

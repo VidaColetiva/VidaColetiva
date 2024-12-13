@@ -14,7 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: addAppBar(context, 'Perfil'),
+      appBar: addAppBar(context, 'Perfil', onPressed: (){Navigator.pop(context);}),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
