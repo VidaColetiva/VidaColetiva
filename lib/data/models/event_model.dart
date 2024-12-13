@@ -65,4 +65,6 @@ class EventModel {
       mediaModelList = l;
     }
   }
+
+  get description => null;
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/event_model.dart';
+import 'package:vidacoletiva/data/models/media_model.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
 
 class EventPage extends StatelessWidget {
   final EventModel event;
@@ -9,9 +12,12 @@ class EventPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final ProjectController projectController =
+    //     Provider.of<ProjectController>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(event.title ?? ""),
+        title: Text(event.title ?? "", style: const TextStyle(color: Colors.white),),
         backgroundColor: AppColors.primaryOrange,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -22,6 +28,87 @@ class EventPage extends StatelessWidget {
           },
         ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(
+              event.title ?? "",
+              style: const TextStyle(fontSize: 24),
+            ),
+            Text(event.description ?? ""),
+            imageCarousel(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Iterable<Widget> photoList() {
+    return event.mediaModelList!.map((media) {
+      return FutureBuilder<String>(
+        future: media.getUrl(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Image.network(
+              snapshot.data.toString(),
+              fit: BoxFit.fitWidth,
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
+      );
+    });
+  }
+
+  Widget imageCarousel(BuildContext context) {
+    return CarouselSlider(
+        options: CarouselOptions(
+          height: 400,
+          viewportFraction: 1,
+          enableInfiniteScroll: false,
+          clipBehavior: Clip.hardEdge,
+        ),
+        items: [
+          ...event.mediaModelList!.map((e) => carouselImage(context, e))
+        ]);
+  }
+
+  Widget carouselImage(BuildContext context, MediaModel media) {
+    return FutureBuilder<String>(
+      future: media.getUrl(),
+      builder: (context, snapshot) {
+        return Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    snapshot.data.toString(),
+                  ),// AssetImage('lib/resources/assets/images/stock-image.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height / 50,
+                    left: MediaQuery.of(context).size.width / 20),
+                child: Text('Project Name',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height / 25,
+                        fontWeight: FontWeight.bold)),
+              ),
+            )
+          ],
+        );
+      }
     );
   }
 }
