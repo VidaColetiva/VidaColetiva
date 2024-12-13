@@ -12,8 +12,6 @@ class EventPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final ProjectController projectController =
-    //     Provider.of<ProjectController>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -34,10 +32,14 @@ class EventPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               event.title ?? "",
               style: const TextStyle(fontSize: 24),
+            ),
+            Text(
+              event.text ?? "",
             ),
             Text(event.description ?? ""),
             imageCarousel(context),
@@ -83,6 +85,10 @@ class EventPage extends StatelessWidget {
     return FutureBuilder<String>(
         future: media.getUrl(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const CircularProgressIndicator();
+            
+          }
           return Stack(
             children: [
               Container(
@@ -95,21 +101,6 @@ class EventPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 10,
-                left: 0,
-                right: 0,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).size.height / 50,
-                      left: MediaQuery.of(context).size.width / 20),
-                  child: Text('Project Name',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.height / 25,
-                          fontWeight: FontWeight.bold)),
-                ),
-              )
             ],
           );
         });
