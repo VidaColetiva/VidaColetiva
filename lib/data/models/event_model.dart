@@ -26,7 +26,7 @@ class EventModel {
       "created_at": createdAt,
       "user_id": userID,
       "project_id": projectId,
-      if (mediaModelList != null) "media": mediaModelList,
+      if (mediaList != null) "media": mediaList,
       if (id != null) "id": id,
     };
     return json;
@@ -59,8 +59,10 @@ class EventModel {
     projectId = "${data["project_id"]}";
     if (data["media"] != null) {
       List<MediaModel> l = [];
+      mediaList = [];
       for (var m in data["media"]) {
         l.add(MediaModel.fromFirebase(this, m));
+        mediaList!.add(m);
       }
       mediaModelList = l;
     }

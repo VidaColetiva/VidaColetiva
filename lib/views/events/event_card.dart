@@ -50,7 +50,7 @@ class EventCard extends StatelessWidget {
                       fontSize: MediaQuery.of(context).size.height / 35,
                       fontWeight: FontWeight.bold,
                     )),
-                Text('${event.mediaModelList?.length ?? 0} mídias',
+                Text('${event.mediaList?.length ?? 0} mídias',
                     style: TextStyle(
                       color: AppColors.grey,
                       fontSize: MediaQuery.of(context).size.height / 60,
