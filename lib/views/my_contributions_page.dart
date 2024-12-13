@@ -5,6 +5,7 @@ import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/views/events/event_card.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_app_bar.dart';
+import '../resources/widgets/main_drawer.dart';
 
 class MyContributionsPage extends StatefulWidget {
   const MyContributionsPage({super.key});
@@ -22,6 +23,7 @@ class _MyContributionsPageState extends State<MyContributionsPage> {
 
     return Scaffold(
       appBar: mainAppBar(context, leading: true),
+      endDrawer: mainDrawer(context),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/user_model.dart';
+import 'package:vidacoletiva/data/repositories/user_repository.dart';
 import 'package:vidacoletiva/data/services/login_service.dart';
 
 class UserController extends ChangeNotifier {
   final LoginService _loginService;
+  final UserRepository _userRepository = UserRepository();
 
   UserController(this._loginService);
 
@@ -18,6 +20,7 @@ class UserController extends ChangeNotifier {
       isLogged = true;
     }
     isLoading = false;
+    user = await _userRepository.getSelf();
     notifyListeners();
   }
 
