@@ -11,6 +11,7 @@ class UserController extends ChangeNotifier {
 
   bool isLogged = false;
   bool isLoading = true;
+  bool isSuperAdmin = false;
 
   UserModel? user;
 
@@ -18,9 +19,12 @@ class UserController extends ChangeNotifier {
     var ac = await _loginService.signInSilently();
     if (ac != null) {
       isLogged = true;
+      await Future.wait([
+        _userRepository.getSelf().then((value) => user = value),
+        _userRepository.getIsSuperAdmin().then((value) => isSuperAdmin = value)
+      ]);
     }
     isLoading = false;
-    user = await _userRepository.getSelf();
     notifyListeners();
   }
 
@@ -30,6 +34,10 @@ class UserController extends ChangeNotifier {
     var acc = await _loginService.signInWithGoogle();
     isLoading = false;
     if (acc != null) {
+       await Future.wait([
+        _userRepository.getSelf().then((value) => user = value),
+        _userRepository.getIsSuperAdmin().then((value) => isSuperAdmin = value)
+      ]);
       isLogged = true;
     } else {
       isLogged = false;
