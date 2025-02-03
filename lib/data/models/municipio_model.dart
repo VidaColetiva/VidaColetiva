@@ -16,7 +16,7 @@ class Municipio {
     );
   }
 
-  Future<List<Municipio>> buscaMunicipiosPorEstado(String siglaEstado) async {
+  static Future<List<Municipio>> buscaMunicipiosPorEstado(String siglaEstado) async {
     const urlBase = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
     try {
       final uri = Uri.parse('$urlBase/$siglaEstado/municipios');

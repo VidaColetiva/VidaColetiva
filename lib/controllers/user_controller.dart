@@ -50,4 +50,10 @@ class UserController extends ChangeNotifier {
     await _loginService.signOut();
     notifyListeners();
   }
+
+  save(Map<String, dynamic> userDelta) async {
+    await _userRepository.updateUser(userDelta);
+    await _userRepository.getSelf().then((value) => user = value);
+    notifyListeners();
+  }
 }

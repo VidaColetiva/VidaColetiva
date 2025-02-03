@@ -16,7 +16,7 @@ class Estado {
     );
   }
 
-  Future<List<Estado>> buscaTodosEstados() async {
+  static Future<List<Estado>> buscaTodosEstados() async {
     const urlBase = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 
     try {

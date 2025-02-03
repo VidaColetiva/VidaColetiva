@@ -40,4 +40,10 @@ class UserRepository {
     }
     return false;
   }
+
+  Future<void> updateUser(Map<String, dynamic> data) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        _firebaseFirestore.doc('/users/${_firebaseAuth.currentUser!.uid}');
+    await documentReference.update(data);
+  }
 }

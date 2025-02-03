@@ -7,6 +7,7 @@ import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/assets/colour_pallete.dart';
 import 'package:vidacoletiva/views/add_event_page.dart';
 import 'package:vidacoletiva/views/add_project_page.dart';
+import 'package:vidacoletiva/views/edit_profile_data.dart';
 import 'package:vidacoletiva/views/events_page.dart';
 import 'package:vidacoletiva/views/home_page.dart';
 import 'package:vidacoletiva/views/my_contributions_page.dart';
@@ -47,6 +48,7 @@ class VidaColetiva extends StatelessWidget {
               '/add_event': (context) => const AddEventPage(),
               '/profile': (context) => const ProfilePage(),
               '/profile_data': (context) => const ProfileData(),
+              '/profile_data_edit': (context) => const EditProfileData(),
             },
             // home: const RedirectionPage(),
           );

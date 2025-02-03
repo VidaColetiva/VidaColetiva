@@ -23,7 +23,7 @@ class _ProfileDataState extends State<ProfileData> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/20, vertical: MediaQuery.of(context).size.height/200),
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height/13,
+        height: MediaQuery.of(context).size.height/12,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(100)),
           border: Border.fromBorderSide(BorderSide(color: AppColors.primaryGreen, width: 2)),
@@ -63,7 +63,9 @@ class _ProfileDataState extends State<ProfileData> {
     final UserController userController = Provider.of<UserController>(context);
 
     return Scaffold(
-      appBar: addAppBar(context, 'Perfil', isEdit: true, editFunction: (){}),
+      appBar: addAppBar(context, 'Perfil', isEdit: true, editFunction: (){
+        Navigator.pushNamed(context, '/profile_data_edit');
+      }),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -81,9 +83,9 @@ class _ProfileDataState extends State<ProfileData> {
             displayInfo('Estado', userController.user!.state ?? 'Não informado', context),
             displayInfo(
               'Cidade',
-              userController.user!.county != null ?
-              userController.user!.county.toString() :
-              'Não informado',
+              userController.user!.countyName != null ?
+              userController.user!.countyName! :
+              userController.user!.county.toString(),
               context),
             displayInfo('Identidade étnico-racial', userController.user!.race ?? 'Não informado', context),
             displayInfo('Gênero', userController.user!.gender ?? 'Não informado', context),
