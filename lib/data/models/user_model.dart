@@ -9,10 +9,13 @@ class UserModel {
   String? occupation;
   int? county;
   String? state;
+  String? countyName;
   DateTime? bornAt;
   late bool isAdmin;
   List<EventModel>? events;
   List<String>? acceptedEulas;
+
+  UserModel();
 
   UserModel.fromJson(Map<String, dynamic> json) {
     email = json['email'];
@@ -25,6 +28,7 @@ class UserModel {
     if (json['born_at'] != null) {
       bornAt = (json['born_at'] as Timestamp).toDate();
     }
+    countyName = json['county_name'];
     acceptedEulas = json['accepted_eulas'];
   }
 
