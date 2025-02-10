@@ -9,17 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controllers/user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controllers/user_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/my_contributions_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/my_contributions_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/profile_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/profile_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/project_page.dart" afterDir="false" />
-    </list>
+    <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="nova tela de adicionar projeto" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,6 +84,15 @@
       <option name="presentableId" value="Default" />
       <updated>1729518262249</updated>
     </task>
+    <task id="LOCAL-00001" summary="nova tela de adicionar projeto">
+      <option name="closed" value="true" />
+      <created>1739208943421</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739208943421</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -101,5 +100,9 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="nova tela de adicionar projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="nova tela de adicionar projeto" />
   </component>
 </project>
