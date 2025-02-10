@@ -30,4 +30,20 @@ class UserRepository {
     });
     return UserModel.fromJson({'email': FirebaseAuth.instance.currentUser!.email});
   }
+
+  Future<bool> getIsSuperAdmin() async {
+    DocumentReference<Map<String, dynamic>> documentReference = _firebaseFirestore
+        .doc('/users/${_firebaseAuth.currentUser!.uid}/private/private');
+    DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await documentReference.get();
+    if (documentSnapshot.exists) {
+      return documentSnapshot.data()!['isSuperAdmin'] ?? false;
+    }
+    return false;
+  }
+
+  Future<void> updateUser(Map<String, dynamic> data) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        _firebaseFirestore.doc('/users/${_firebaseAuth.currentUser!.uid}');
+    await documentReference.update(data);
+  }
 }
