@@ -1,9 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/project_controller.dart';
+import 'package:vidacoletiva/data/models/media_model.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
+import 'package:image_picker/image_picker.dart';
 import '../resources/assets/colour_pallete.dart';
 
 class AddProjectPage extends StatefulWidget {
@@ -15,21 +17,41 @@ class AddProjectPage extends StatefulWidget {
 
 class _AddProjectPageState extends State<AddProjectPage> {
   File? selectedImage;
+  CreateMedia? createMedia;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController institutionController = TextEditingController();
+  TextEditingController targetController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
 
   Future pickImageFromGallery() async {
     final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (returnedImage == null) return;
 
+    File f = File(returnedImage.path);
+
     setState(() {
-      selectedImage = File(returnedImage.path);
+      selectedImage = f;
     });
+
+    createMedia = CreateMedia(f, f.path.split('.').last);
   }
 
   @override
   Widget build(BuildContext context) {
+    final ProjectController projectController = Provider.of<ProjectController>(context);
+
     return Scaffold(
-      appBar: addAppBar(context, 'Criar um projeto'),
+      appBar: addAppBar(context, 'Criar um projeto', onPressed: () async {
+        await projectController.createProject(
+          nameController.text,
+          institutionController.text,
+          targetController.text,
+          descriptionController.text,
+          createMedia,
+        );
+        Navigator.pop(context);
+      }),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -42,7 +64,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
                   vertical: MediaQuery.of(context).size.height / 120,
                   horizontal: MediaQuery.of(context).size.width / 20),
               child: customFormField(
-                controller: TextEditingController(),
+                controller: institutionController,
                 info: 'a',
                 label: 'Instituição',
                 minLines: 1,
@@ -55,7 +77,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
                   vertical: MediaQuery.of(context).size.height / 120,
                   horizontal: MediaQuery.of(context).size.width / 20),
               child: customFormField(
-                controller: TextEditingController(),
+                controller: targetController,
                 info: 'o',
                 label: 'Publico alvo',
                 minLines: 1,
@@ -68,7 +90,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
                   vertical: MediaQuery.of(context).size.height / 120,
                   horizontal: MediaQuery.of(context).size.width / 20),
               child: customFormField(
-                controller: TextEditingController(),
+                controller: descriptionController,
                 info: 'a',
                 label: 'Descrição',
                 minLines: 5,
@@ -140,6 +162,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
               MediaQuery.of(context).size.height / 50,
             ),
             child: TextFormField(
+              controller: nameController,
               selectionControls: MaterialTextSelectionControls(),
               cursorColor: AppColors.white,
               style: TextStyle(

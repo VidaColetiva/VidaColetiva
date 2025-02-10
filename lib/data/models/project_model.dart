@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'media_model.dart';
+
 class ProjectModel {
   String? id;
   String? name;
@@ -9,6 +11,10 @@ class ProjectModel {
   bool? isOpen;
   List managers = [];
   List banned = [];
+  MediaModel? mediaModel;
+  String? media;
+
+  ProjectModel({this.id, this.name, this.description, this.institution, this.target, this.isOpen});
 
   ProjectModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

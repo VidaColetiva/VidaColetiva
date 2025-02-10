@@ -1,4 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart';
+import 'package:vidacoletiva/data/repositories/user_repository.dart';
+import 'package:vidacoletiva/data/services/login_service.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -11,6 +17,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: EdgeInsets.symmetric(
                     vertical: MediaQuery.of(context).size.height / 30),
                 child: Text(
-                  'Fulano da Silva',
+                  _firebaseAuth.currentUser!.displayName!,
                   style: TextStyle(
                       color: AppColors.darkGreen,
                       fontWeight: FontWeight.bold,
@@ -33,14 +41,20 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             Container(
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  border: Border.all(color: AppColors.primaryGreen, width: 2),
-                  borderRadius: BorderRadius.circular(100),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                border: Border.all(color: AppColors.primaryGreen, width: 2),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: ClipOval(
+                child: Image.network(
+                  _firebaseAuth.currentUser!.photoURL!,
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width/2,
+                  height: MediaQuery.of(context).size.width/2,
                 ),
-                child: Icon(Icons.person_outline_rounded,
-                    color: AppColors.primaryGreen,
-                    size: MediaQuery.of(context).size.height / 5)),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/20, vertical: MediaQuery.of(context).size.height/25),
               child: TextButton(
