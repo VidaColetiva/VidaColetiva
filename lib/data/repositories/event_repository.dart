@@ -15,6 +15,15 @@ class EventRepository {
             value.docs.map(EventModel.fromQueryDocSnapshot).toList());
   }
 
+  Future<List<EventModel>> listAllOnProject(String projectId) async {
+    return _firebaseFirestore
+        .collection('events')
+        .where('project_id', isEqualTo: projectId)
+        .get()
+        .then((value) =>
+            value.docs.map(EventModel.fromQueryDocSnapshot).toList());
+  }
+
   Future<EventModel> create(EventModel event) async {
     event.userID = _firebaseAuth.currentUser!.uid;
     event.createdAt = DateTime.now();

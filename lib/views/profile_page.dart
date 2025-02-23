@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart';
-import 'package:vidacoletiva/data/repositories/user_repository.dart';
-import 'package:vidacoletiva/data/services/login_service.dart';
+import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -21,6 +18,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    UserController userController = Provider.of<UserController>(context);
     return Scaffold(
       appBar: addAppBar(context, 'Perfil', onPressed: (){Navigator.pop(context);}),
       body: SingleChildScrollView(
@@ -48,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               child: ClipOval(
                 child: Image.network(
-                  _firebaseAuth.currentUser!.photoURL!,
+                  userController.photoUrl ?? "",
                   fit: BoxFit.cover,
                   width: MediaQuery.of(context).size.width/2,
                   height: MediaQuery.of(context).size.width/2,

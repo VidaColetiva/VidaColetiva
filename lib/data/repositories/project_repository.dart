@@ -11,7 +11,6 @@ class ProjectRepository {
         .then((value) => value.docs
             .map((e) => ProjectModel.fromQueryDocSnapshot(e))
             .toList());
-
     return projectsList;
   }
 

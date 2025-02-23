@@ -18,6 +18,10 @@ class EventService {
     return _eventRepository.listMyEvents();
   }
 
+  Future<List<EventModel>> listEventsOnProject(String projectId) async {
+    return _eventRepository.listAllOnProject(projectId);
+  }
+
   Future<EventModel> addEvent(
       EventModel event, List<CreateMedia> createMediaList) async {
     if (createMediaList.isNotEmpty) {

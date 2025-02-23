@@ -59,10 +59,13 @@ Widget mainDrawer(BuildContext context) {
         textButton('Perfil', context, () {
           Navigator.pushNamed(context, '/profile');
         }),
-        textButton('Preferências', context, () {}),
-        textButton('Sobre o app', context, () {}),
-        textButton('Termos legais', context, () {}),
-        textButton('Avaliar app', context, () {}),
+        // textButton('Preferências', context, () {}),
+        // textButton('Sobre o app', context, () {}),
+        // textButton('Termos legais', context, () {}),
+        // textButton('Avaliar app', context, () {}),
+        if (userController.isSuperAdmin) textButton('Administração', context, () {
+          Navigator.pushNamed(context, '/admin');
+        }),
         textButton('Sair', context, () async {
           await userController.logout();
         }),
