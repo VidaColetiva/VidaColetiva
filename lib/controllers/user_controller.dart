@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/user_model.dart';
 import 'package:vidacoletiva/data/repositories/user_repository.dart';
@@ -14,6 +15,7 @@ class UserController extends ChangeNotifier {
   bool isSuperAdmin = false;
 
   UserModel? user;
+  String? photoUrl;
 
   init() async {
     var ac = await _loginService.signInSilently();
@@ -24,8 +26,20 @@ class UserController extends ChangeNotifier {
         _userRepository.getIsSuperAdmin().then((value) => isSuperAdmin = value)
       ]);
     }
+    getPhotoUrl();
     isLoading = false;
     notifyListeners();
+  }
+
+  getPhotoUrl() {
+    var user = FirebaseAuth.instance.currentUser!;
+    for (var i = 0; i < user.providerData.length; i++) {
+      var p = user.providerData[i];
+      if (null != p.photoURL) {
+        photoUrl = p.photoURL;
+        return;
+      }
+    }
   }
 
   loginGoogle() async {

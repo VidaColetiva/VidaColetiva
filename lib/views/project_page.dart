@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vidacoletiva/controllers/event_controller.dart';
 import 'package:vidacoletiva/controllers/project_controller.dart';
+import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/widgets/main_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
@@ -18,6 +20,7 @@ class _ProjectPageState extends State<ProjectPage> {
   Widget build(BuildContext context) {
     final ProjectController projectController =
         Provider.of<ProjectController>(context);
+    final UserController userController = Provider.of<UserController>(context);
     return Scaffold(
       appBar: mainAppBar(context, leading: true),
       endDrawer: mainDrawer(context),
@@ -29,6 +32,12 @@ class _ProjectPageState extends State<ProjectPage> {
               padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
               child: aboutText(projectController),
             ),
+            if (userController.isSuperAdmin)
+              Padding(
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.height / 30),
+                child: allEventButton(context, projectController.project!.id),
+              ),
             myContributions(),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
@@ -116,6 +125,44 @@ class _ProjectPageState extends State<ProjectPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Minhas contribuições',
+              style: TextStyle(
+                color: AppColors.darkGreen,
+                fontSize: MediaQuery.of(context).size.height / 40,
+                fontWeight: FontWeight.bold,
+              )),
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: AppColors.darkGreen,
+            size: MediaQuery.of(context).size.height / 30,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget allEventButton(BuildContext context, String? projectId) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
+            MediaQuery.of(context).size.height / 13),
+        backgroundColor: AppColors.white,
+        side: const BorderSide(
+          color: AppColors.darkGreen,
+          width: 1,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onPressed: () {
+        Provider.of<EventController>(context, listen:false).listEventsOnProject(projectId ?? "");
+        Navigator.pushNamed(context, '/all_events');
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Todos Eventos',
               style: TextStyle(
                 color: AppColors.darkGreen,
                 fontSize: MediaQuery.of(context).size.height / 40,

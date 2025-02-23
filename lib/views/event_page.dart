@@ -31,19 +31,21 @@ class EventPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              event.title ?? "",
-              style: const TextStyle(fontSize: 24),
-            ),
-            Text(
-              event.text ?? "",
-            ),
-            Text(event.description ?? ""),
-            imageCarousel(context),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                event.title ?? "",
+                style: const TextStyle(fontSize: 24),
+              ),
+              Text(
+                event.text ?? "",
+              ),
+              Text(event.description ?? ""),
+              imageCarousel(context),
+            ],
+          ),
         ),
       ),
     );

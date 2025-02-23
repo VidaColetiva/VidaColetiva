@@ -9,6 +9,7 @@ class EventController extends ChangeNotifier {
   EventController(this.eventService);
 
   List<EventModel> events = [];
+  Map<String,List<EventModel>> eventsInProject = {};
 
   init() async {
     await listOwnEvents();
@@ -20,9 +21,22 @@ class EventController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future listEventsOnProject(String projectId) async {
+    List<EventModel> m = await eventService.listEventsOnProject(projectId);
+    eventsInProject[projectId] = m;
+    notifyListeners();
+  }
+
   List<EventModel> getEventsOnProject(String projectId) {
     var e = events.where((ev) => ev.projectId == projectId).toList();
     return e;
+  }
+  
+  List<EventModel> getAllEventsOnProject(String? projectId) {
+    if (projectId == null) {
+      return [];
+    }
+    return eventsInProject[projectId] ?? [];
   }
 
   Future createEvent(String title, String description, String projectId, List<CreateMedia> mediaList) async {
