@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="nova tela de adicionar projeto" />
+    <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="nova tela de adicionar projeto">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/models/media_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/models/media_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/models/project_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/models/project_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/project_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/project_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/add_project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_project_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/project_page.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

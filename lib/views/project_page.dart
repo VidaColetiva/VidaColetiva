@@ -52,6 +52,25 @@ class _ProjectPageState extends State<ProjectPage> {
   Widget leadingImage(ProjectController projectController) {
     return Stack(
       children: [
+        projectController.project!.media != null ?
+        FutureBuilder(
+          future: projectController.project!.mediaModel!.getUrl(),
+          builder: (context, snapshot){
+            if (snapshot.data == null) {
+              return const CircularProgressIndicator();
+            }
+
+            return Container(
+              height: MediaQuery.of(context).size.height / 3.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(snapshot.data.toString()),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+        ) :
         Container(
           height: MediaQuery.of(context).size.height / 3.5,
           decoration: const BoxDecoration(
@@ -94,7 +113,7 @@ class _ProjectPageState extends State<ProjectPage> {
               (projectController.project!.description != null &&
                       projectController.project!.description!.isNotEmpty)
                   ? projectController.project!.description!
-                  : "Não há descrição para projeto ${projectController.project!.name}",
+                  : "Não há descrição para o projeto ${projectController.project!.name}",
               style: TextStyle(
                   color: AppColors.darkGreen,
                   fontSize: MediaQuery.of(context).size.height / 45,
@@ -162,7 +181,7 @@ class _ProjectPageState extends State<ProjectPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Todos Eventos',
+          Text('Todos Relatos',
               style: TextStyle(
                 color: AppColors.darkGreen,
                 fontSize: MediaQuery.of(context).size.height / 40,

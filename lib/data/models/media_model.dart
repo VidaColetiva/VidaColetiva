@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vidacoletiva/data/models/project_model.dart';
 
 import 'event_model.dart';
 
@@ -33,6 +34,7 @@ class CreateMedia {
 
 class MediaModel {
   EventModel event;
+  ProjectModel? project;
   String? name;
   String? userID;
   MediaDataType? dataType;
@@ -92,5 +94,52 @@ class MediaModel {
 
   Future<Uint8List?> getBytes() {
     return FirebaseStorage.instance.ref('$userID/${event.id}/$name').getData();
+  }
+}
+
+class ProjectMediaModel {
+  ProjectModel project;
+  String? name;
+  String? userID;
+  MediaDataType? dataType;
+
+  ProjectMediaModel.fromJson(this.project, Map<String, dynamic> json) {
+    // counter = json["counter"];
+    switch (json["data_type"]) {
+      case "P":
+        dataType = MediaDataType.png;
+        break;
+      case "J":
+        dataType = MediaDataType.jpeg;
+        break;
+      case "G":
+        dataType = MediaDataType.gif;
+        break;
+      case "3":
+        dataType = MediaDataType.mp3;
+        break;
+      case "4":
+        dataType = MediaDataType.mp4;
+        break;
+      default:
+    }
+  }
+
+  ProjectMediaModel.fromFirebase(this.project, String name) {
+    List n = name.split('.');
+    this.name = name;
+    userID = project.ownerId;
+    dataType = MediaModel.dataTypeFromMime(n[1]);
+  }
+
+  Future<String> getUrl() {
+    print('$userID/${project.id}/$name');
+    return FirebaseStorage.instance
+        .ref('$userID/${project.id}/$name')
+        .getDownloadURL();
+  }
+
+  Future<Uint8List?> getBytes() {
+    return FirebaseStorage.instance.ref('$userID/${project.id}/$name').getData();
   }
 }
