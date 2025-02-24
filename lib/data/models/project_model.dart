@@ -11,8 +11,11 @@ class ProjectModel {
   bool? isOpen;
   List managers = [];
   List banned = [];
-  MediaModel? mediaModel;
+  ProjectMediaModel? mediaModel;
   String? media;
+  String? ownerId;
+  DateTime? createdAt;
+
 
   ProjectModel({this.id, this.name, this.description, this.institution, this.target, this.isOpen});
 
@@ -20,11 +23,18 @@ class ProjectModel {
     id = json['id'];
     name = json['name'];
     description = json['description'];
+    institution = json['institution'];
+    target = json['target'];
+    managers = json['managers'];
+    isOpen = json['is_open'];
+    ownerId = json['owner_id'];
+    if (json["media"] != null) {
+      mediaModel = ProjectMediaModel.fromJson(this, json["media"]);
+    }
   }
 
   toJson() {
     Map<String, dynamic> json = {
-      "id": id,
       "name": name,
       "description": description,
       "institution": institution,
@@ -32,6 +42,8 @@ class ProjectModel {
       "managers": managers,
       "banned": banned,
       "is_open": isOpen,
+      "owner_id": ownerId,
+      if (media != null) "media": media,
     };
     return json;
   }
@@ -46,7 +58,11 @@ class ProjectModel {
     managers = data["managers"];
     isOpen = data["is_open"];
     banned = data["banned"] ?? [];
-
+    ownerId = data["owner_id"];
+    if (data["media"] != null) {
+      media = data["media"];
+      mediaModel = ProjectMediaModel.fromFirebase(this, data["media"]);
+    }
   }
 
   ProjectModel.fromDocSnapshot(DocumentSnapshot<Map<String, dynamic>> documentSnapshot) {

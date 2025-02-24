@@ -51,7 +51,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
           createMedia,
         );
         Navigator.pop(context);
-      }),
+      }, isCheck: true),
       body: SingleChildScrollView(
         child: Column(
           children: [
