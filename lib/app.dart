@@ -23,14 +23,17 @@ class VidaColetiva extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<UserController>(
               create: (_) => UserController(GetIt.I.get())..init()),
           ChangeNotifierProvider<EventController>(
               create: (_) => EventController(GetIt.I.get())..init()),
-          ChangeNotifierProvider<ProjectController>(
-              create: (_) => ProjectController(GetIt.I.get())..init()),
+          ChangeNotifierProxyProvider<UserController, ProjectController>(
+            create: (_) => ProjectController(GetIt.I.get(), null),
+            update: (_, userController, __) => ProjectController(GetIt.I.get(), userController)..init(),
+        ),
         ],
         builder: (context, child) {
           return MaterialApp(

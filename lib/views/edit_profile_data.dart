@@ -113,6 +113,7 @@ class _EditProfileDataState extends State<EditProfileData> {
         onPressed: () {
           save();
         },
+        isCheck: true
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -346,6 +347,9 @@ class _EditProfileDataState extends State<EditProfileData> {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) return const CircularProgressIndicator();
                 List<Estado> listaEstados = snapshot.data!;
+                listaEstados.sort((a,b) {
+                  return a.nome!.compareTo(b.nome!);
+                });
 
                 return Padding(
                   padding: EdgeInsets.zero,

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/project_controller.dart';
+import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/widgets/custom_buttons.dart';
 import 'package:vidacoletiva/views/home/projects_carousel.dart';
 import '../data/models/project_model.dart';
@@ -34,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    UserController userController = Provider.of<UserController>(context);
 
     return Scaffold(
       key: scaffoldKey,
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             imageCarousel(),
-            Padding(
+            if (userController.isSuperAdmin) Padding(
               padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height / 50),
               child: addButton(context, () {
@@ -66,6 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget imageCarousel() {
     final ProjectController projectsController =
+    
     Provider.of<ProjectController>(context);
     List<Widget> carouselImages = [];
 

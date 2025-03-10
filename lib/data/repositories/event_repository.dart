@@ -7,6 +7,7 @@ class EventRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<List<EventModel>> listMyEvents() async {
+    if (_firebaseAuth.currentUser == null) return [];
     return _firebaseFirestore
         .collection('events')
         .where('user_id', isEqualTo: _firebaseAuth.currentUser!.uid)

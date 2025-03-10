@@ -22,9 +22,11 @@ class _AddProjectPageState extends State<AddProjectPage> {
   TextEditingController institutionController = TextEditingController();
   TextEditingController targetController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  bool isOpen = false;
 
   Future pickImageFromGallery() async {
-    final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (returnedImage == null) return;
 
@@ -39,7 +41,8 @@ class _AddProjectPageState extends State<AddProjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    final ProjectController projectController = Provider.of<ProjectController>(context);
+    final ProjectController projectController =
+        Provider.of<ProjectController>(context);
 
     return Scaffold(
       appBar: addAppBar(context, 'Criar um projeto', onPressed: () async {
@@ -49,6 +52,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
           targetController.text,
           descriptionController.text,
           createMedia,
+          isOpen
         );
         Navigator.pop(context);
       }, isCheck: true),
@@ -98,6 +102,32 @@ class _AddProjectPageState extends State<AddProjectPage> {
                 tipo: TextInputType.multiline,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height / 120,
+                  horizontal: MediaQuery.of(context).size.width / 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Projeto aberto ao público?',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.darkGreen,
+                    ),
+                  ),
+                  Switch(
+                    value: isOpen,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isOpen = value;
+                      });
+                    },
+                    activeColor: AppColors.primaryOrange,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -107,43 +137,43 @@ class _AddProjectPageState extends State<AddProjectPage> {
   Widget formImage() {
     return Stack(
       children: [
-        selectedImage == null ?
-        Container(
-          height: MediaQuery.of(context).size.height / 3.5,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[AppColors.grey, AppColors.primaryOrange]),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 10,
-                offset: const Offset(5, 5), // changes position of shadow
+        selectedImage == null
+            ? Container(
+                height: MediaQuery.of(context).size.height / 3.5,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: <Color>[AppColors.grey, AppColors.primaryOrange]),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                  ],
+                ),
+              )
+            : Container(
+                height: MediaQuery.of(context).size.height / 3.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  image: DecorationImage(
+                    image: FileImage(selectedImage!),
+                    fit: BoxFit.cover,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: Offset(5, 5), // changes position of shadow
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ) :
-        Container(
-          height: MediaQuery.of(context).size.height/3.5,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            image: DecorationImage(
-              image: FileImage(selectedImage!),
-              fit: BoxFit.cover,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 10,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
-        ),
         Positioned(
           right: 0,
           child: IconButton(
@@ -151,7 +181,8 @@ class _AddProjectPageState extends State<AddProjectPage> {
             color: AppColors.white,
             onPressed: () {
               pickImageFromGallery();
-            },),
+            },
+          ),
         ),
         Positioned(
           bottom: 10,

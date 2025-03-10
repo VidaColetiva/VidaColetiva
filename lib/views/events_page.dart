@@ -42,11 +42,15 @@ class _EventsPageState extends State<EventsPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 40,
+              vertical: 10,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text("Meus eventos", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                ),
                 ...eventController.events.map((e) => EventCard(event: e))
               ],
             ),

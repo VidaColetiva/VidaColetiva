@@ -21,12 +21,12 @@ AppBar mainAppBar(BuildContext mainContext,
         : null,
     backgroundColor: AppColors.primaryOrange,
     actions: [
-      IconButton(
-        icon: const Icon(Icons.notifications_none_outlined),
-        iconSize: MediaQuery.of(mainContext).size.height / 25,
-        color: AppColors.white,
-        onPressed: () {},
-      ),
+      // IconButton(
+      //   icon: const Icon(Icons.notifications_none_outlined),
+      //   iconSize: MediaQuery.of(mainContext).size.height / 25,
+      //   color: AppColors.white,
+      //   onPressed: () {},
+      // ),
       IconButton(
         icon: const Icon(Icons.account_circle_outlined),
         iconSize: MediaQuery.of(mainContext).size.height / 25,
