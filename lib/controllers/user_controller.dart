@@ -25,10 +25,15 @@ class UserController extends ChangeNotifier {
         _userRepository.getSelf().then((value) => user = value),
         _userRepository.getIsSuperAdmin().then((value) => isSuperAdmin = value)
       ]);
+      getPhotoUrl();
     }
-    getPhotoUrl();
     isLoading = false;
     notifyListeners();
+  }
+
+  String getDisplayName() {
+    if (FirebaseAuth.instance.currentUser == null) return "";
+    return FirebaseAuth.instance.currentUser!.displayName!;
   }
 
   getPhotoUrl() {

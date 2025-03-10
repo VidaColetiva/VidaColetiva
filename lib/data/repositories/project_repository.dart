@@ -7,7 +7,16 @@ class ProjectRepository {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Future<List<ProjectModel>> listProjects() async {
+  Future<List<ProjectModel>> listProjects(bool isAdmin) async {
+    if (!isAdmin) {
+      return await _firebaseFirestore
+        .collection('projects')
+        .where('is_open', isEqualTo: true)
+        .get()
+        .then((value) => value.docs
+            .map((e) => ProjectModel.fromQueryDocSnapshot(e))
+            .toList());
+    }
     List<ProjectModel> projectsList = await _firebaseFirestore
         .collection('projects')
         .get()

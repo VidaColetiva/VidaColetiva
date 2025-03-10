@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/event_controller.dart';
 import 'package:vidacoletiva/controllers/user_controller.dart';
@@ -43,6 +44,7 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             googleLoginWidget(context),
+            versionWidget(),
           ],
         ),
       ),
@@ -70,5 +72,17 @@ class LoginPage extends StatelessWidget {
             style: TextStyle(color: AppColors.white, fontSize: 20),
           ),
         ));
+  }
+
+  Widget versionWidget() {
+    return FutureBuilder<PackageInfo>(
+      future: PackageInfo.fromPlatform(), 
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const SizedBox();
+        }
+        return Text(snapshot.data!.version);
+      }
+    );
   }
 }

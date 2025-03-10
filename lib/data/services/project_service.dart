@@ -14,8 +14,8 @@ class ProjectService {
 
   ProjectService(this._projectRepository);
 
-  Future<List<ProjectModel>> listProjects() async {
-    return _projectRepository.listProjects();
+  Future<List<ProjectModel>> listProjects({bool isAdmin = false}) async {
+    return _projectRepository.listProjects(isAdmin);
   }
 
   Future<ProjectModel> addProject(ProjectModel project, CreateMedia? createMedia) async {

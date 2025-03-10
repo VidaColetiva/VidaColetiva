@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/user_controller.dart';
@@ -30,7 +29,6 @@ Widget textButton(String text, BuildContext context, Function onPressed) {
 
 Widget mainDrawer(BuildContext context) {
   UserController userController = Provider.of<UserController>(context);
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   return Drawer(
     width: MediaQuery.of(context).size.width / 1.5,
@@ -48,7 +46,7 @@ Widget mainDrawer(BuildContext context) {
             ),
           ),
           child: Center(
-            child: Text('Olá! ${_firebaseAuth.currentUser!.displayName!.split(' ')[0]}',
+            child: Text('Olá! ${userController.getDisplayName().split(' ')[0]}',
               style: TextStyle(
                 color: AppColors.darkGreen,
                 fontSize: MediaQuery.of(context).size.height / 30,

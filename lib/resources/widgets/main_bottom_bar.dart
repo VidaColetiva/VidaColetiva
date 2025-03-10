@@ -29,17 +29,17 @@ Widget mainBottomBar(BuildContext context, int selectedIndex, Function(int) onIt
     onTap: (int index) => onItemTapped(index),
     items: [
       TabItem(
-        icon: defaultIcon(Icons.text_snippet_outlined),
-        activeIcon: activeIcon(Icons.text_snippet_outlined),
-      ),
-      TabItem(
         icon: defaultIcon(Icons.home_outlined),
         activeIcon: activeIcon(Icons.home_outlined),
       ),
       TabItem(
-        icon: defaultIcon(Icons.sms_outlined),
-        activeIcon: activeIcon(Icons.sms_outlined),
+        icon: defaultIcon(Icons.text_snippet_outlined),
+        activeIcon: activeIcon(Icons.text_snippet_outlined),
       ),
+      // TabItem(
+      //   icon: defaultIcon(Icons.sms_outlined),
+      //   activeIcon: activeIcon(Icons.sms_outlined),
+      // ),
     ],
   );
 }
