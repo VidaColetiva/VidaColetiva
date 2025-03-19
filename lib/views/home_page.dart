@@ -125,15 +125,18 @@ class _HomePageState extends State<HomePage> {
             bottom: 10,
             left: 0,
             right: 0,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height / 50,
-                  left: MediaQuery.of(context).size.width / 20),
-              child: Text(project.name!,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.height / 25,
-                      fontWeight: FontWeight.bold)),
+            child: Container(
+              color: Colors.black.withAlpha(100),
+              child: Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height / 50,
+                    left: MediaQuery.of(context).size.width / 20),
+                child: Text(project.name!,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height / 25,
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
           )
         ],

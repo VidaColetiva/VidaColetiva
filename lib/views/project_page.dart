@@ -6,7 +6,6 @@ import 'package:vidacoletiva/controllers/user_controller.dart';
 import 'package:vidacoletiva/resources/widgets/main_app_bar.dart';
 
 import '../resources/assets/colour_pallete.dart';
-import '../resources/widgets/main_drawer.dart';
 
 class ProjectPage extends StatefulWidget {
   const ProjectPage({super.key});
@@ -22,8 +21,8 @@ class _ProjectPageState extends State<ProjectPage> {
         Provider.of<ProjectController>(context);
     final UserController userController = Provider.of<UserController>(context);
     return Scaffold(
-      appBar: mainAppBar(context, leading: true),
-      endDrawer: mainDrawer(context),
+      appBar: mainAppBar(context, leading: true, profile: false),
+      // endDrawer: mainDrawer(context),
       body: SingleChildScrollView(
         child: Column(
           children: [

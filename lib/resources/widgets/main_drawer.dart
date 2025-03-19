@@ -64,9 +64,7 @@ Widget mainDrawer(BuildContext context) {
         if (userController.isSuperAdmin) textButton('Administração', context, () {
           Navigator.pushNamed(context, '/admin');
         }),
-        textButton('Sair', context, () async {
-          await userController.logout();
-        }),
+        textButton('Sair', context, userController.logout),
       ],
     ),
   );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../assets/colour_pallete.dart';
 
 AppBar mainAppBar(BuildContext mainContext,
-    {bool? leading, GlobalKey<ScaffoldState>? scaffoldKey}) {
+    {bool? leading, bool profile = true, GlobalKey<ScaffoldState>? scaffoldKey}) {
   return AppBar(
     leading: leading == true
         ? IconButton(
@@ -27,7 +27,7 @@ AppBar mainAppBar(BuildContext mainContext,
       //   color: AppColors.white,
       //   onPressed: () {},
       // ),
-      IconButton(
+      if (profile) IconButton(
         icon: const Icon(Icons.account_circle_outlined),
         iconSize: MediaQuery.of(mainContext).size.height / 25,
         color: AppColors.white,

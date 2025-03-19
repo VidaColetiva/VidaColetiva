@@ -101,7 +101,7 @@ class _AddEventPageState extends State<AddEventPage> {
         Provider.of<EventController>(context);
 
     return Scaffold(
-      appBar: addAppBar(context, 'Criar um relato', onPressed: () async {
+      appBar: addAppBar(context, 'Criar um relato',isCheck: true, onPressed: () async {
         await eventController.createEvent(
             title!, description!, projectController.project!.id!, mediaList);
         Navigator.pop(context);
