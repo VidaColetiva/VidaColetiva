@@ -11,6 +11,8 @@ class EventController extends ChangeNotifier {
   List<EventModel> events = [];
   Map<String,List<EventModel>> eventsInProject = {};
 
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   init() async {
     await listOwnEvents();
   }
@@ -39,7 +41,10 @@ class EventController extends ChangeNotifier {
     return eventsInProject[projectId] ?? [];
   }
 
-  Future createEvent(String title, String description, String projectId, List<CreateMedia> mediaList) async {
+  Future<bool> createEvent(String? title, String? description, String projectId, List<CreateMedia> mediaList) async {
+    if (formKey.currentState == null || !formKey.currentState!.validate()) {
+      return false;
+    }
     EventModel e = await eventService.addEvent(
         EventModel(
           title: title,
@@ -49,6 +54,7 @@ class EventController extends ChangeNotifier {
         mediaList);
     events.add(e);
     notifyListeners();
+    return true;
     // await listOwnEvents();
   }
 }

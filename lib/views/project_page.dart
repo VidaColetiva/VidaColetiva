@@ -22,7 +22,7 @@ class _ProjectPageState extends State<ProjectPage> {
     final UserController userController = Provider.of<UserController>(context);
     return Scaffold(
       appBar: mainAppBar(context, leading: true, profile: false),
-      // endDrawer: mainDrawer(context),
+      // endDrawer: mainDrawer(context)
       floatingActionButton: addEventButton(),
       body: SingleChildScrollView(
         child: Column(
@@ -114,16 +114,18 @@ class _ProjectPageState extends State<ProjectPage> {
               letterSpacing: -0.5)),
       Row(
         children: [
-          Text(
-              (projectController.project!.description != null &&
-                      projectController.project!.description!.isNotEmpty)
-                  ? projectController.project!.description!
-                  : "Não há descrição para o projeto ${projectController.project!.name}",
-              style: const TextStyle(
-                  color: AppColors.darkGreen,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: -0.5)),
+          Flexible(
+            child: Text(
+                (projectController.project!.description != null &&
+                        projectController.project!.description!.isNotEmpty)
+                    ? projectController.project!.description!
+                    : "Não há descrição para o projeto ${projectController.project!.name}",
+                style: const TextStyle(
+                    color: AppColors.darkGreen,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.5)),
+          ),
         ],
       ),
     ]);

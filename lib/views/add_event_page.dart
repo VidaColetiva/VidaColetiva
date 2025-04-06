@@ -11,6 +11,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:path/path.dart' as p;
+import 'package:vidacoletiva/resources/widgets/custom_floating_action_button.dart';
 import '../resources/assets/colour_pallete.dart';
 
 class AddEventPage extends StatefulWidget {
@@ -80,6 +81,13 @@ class _AddEventPageState extends State<AddEventPage> {
     }
   }
 
+  String? validateNotNull(String message, String? value) {
+    if (value == null || value.isEmpty) {
+      return message;
+    }
+    return null;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -101,21 +109,33 @@ class _AddEventPageState extends State<AddEventPage> {
         Provider.of<EventController>(context);
 
     return Scaffold(
-      appBar: addAppBar(context, 'Criar um relato',isCheck: true, onPressed: () async {
-        await eventController.createEvent(
-            title!, description!, projectController.project!.id!, mediaList);
+      appBar: addAppBar(context, 'Criar um relato', isCheck: true,
+          onPressed: () async {
+        bool created = await eventController.createEvent(
+            title, description, projectController.project!.id!, mediaList);
+        if (!created) {
+          return;
+        }
         Navigator.pop(context);
       }),
+      floatingActionButton: CustomFloatingActionButton(
+        onClickCamera: takePhoto,
+        onClickGallery: pickImageFromGallery,
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            leadingImage(projectController),
-            Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-              child: addEventForm(projectController),
-            ),
-            imageCarousel(imageList),
-          ],
+        child: Form(
+          key: eventController.formKey,
+          child: Column(
+            children: [
+              // leadingImage(projectController),
+              Padding(
+                padding:
+                    const EdgeInsets.all(8),
+                child: addEventForm(projectController),
+              ),
+              imageCarousel(imageList),
+            ],
+          ),
         ),
       ),
     );
@@ -186,6 +206,7 @@ class _AddEventPageState extends State<AddEventPage> {
     return Column(
       children: [
         titleFormField(),
+        const SizedBox(height: 16,),
         descriptionFormField(),
         Padding(
           padding:
@@ -195,52 +216,38 @@ class _AddEventPageState extends State<AddEventPage> {
                   isRecording ? 'Parar gravação' : 'Gravar áudio', recordAudio)
               : audioPlayerWidget(),
         ),
-        Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
-          child: buttonText(
-              Icons.attach_file, 'Adicionar imagem', pickImageFromGallery),
-        ),
-        Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
-          child: buttonText(Icons.camera_alt_outlined, 'Tirar foto', takePhoto),
-        ),
       ],
     );
   }
 
-  Padding descriptionFormField() {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: MediaQuery.of(context).size.height / 50),
-      child: TextFormField(
-        onChanged: (value) {
-          description = value;
-        },
-        cursorColor: AppColors.darkGreen,
-        maxLines: 5,
-        style: TextStyle(
+  Widget descriptionFormField() {
+    return TextFormField(
+      onChanged: (value) {
+        description = value;
+      },
+      validator: (value) => validateNotNull('Descrição não pode ser vazia', value),
+      cursorColor: AppColors.darkGreen,
+      maxLines: 5,
+      style: const TextStyle(
+        color: AppColors.darkGreen,
+        fontSize: 24,
+      ),
+      decoration: const InputDecoration(
+        labelText: 'Descrição',
+        labelStyle: TextStyle(
           color: AppColors.darkGreen,
-          fontSize: MediaQuery.of(context).size.height / 40,
+          fontSize: 14,
         ),
-        decoration: InputDecoration(
-          labelText: 'Descrição',
-          labelStyle: TextStyle(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
             color: AppColors.darkGreen,
-            fontSize: MediaQuery.of(context).size.height / 40,
+            width: 1.5,
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.darkGreen,
-              width: 1.5,
-            ),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.darkGreen,
-              width: 1,
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.darkGreen,
+            width: 1,
           ),
         ),
       ),
@@ -253,24 +260,25 @@ class _AddEventPageState extends State<AddEventPage> {
         // projectController.project!.name = value;
         title = value;
       },
+      validator: (value) => validateNotNull('Título não pode ser vazio', value),
       cursorColor: AppColors.darkGreen,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.darkGreen,
-        fontSize: MediaQuery.of(context).size.height / 30,
+        fontSize: 24,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: 'Título',
         labelStyle: TextStyle(
           color: AppColors.darkGreen,
-          fontSize: MediaQuery.of(context).size.height / 40,
+          fontSize: 14,
         ),
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.darkGreen,
             width: 1.5,
           ),
         ),
-        enabledBorder: const OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.darkGreen,
             width: 1,
@@ -282,36 +290,36 @@ class _AddEventPageState extends State<AddEventPage> {
 
   Text actionsText(String text) {
     return Text(text,
-        style: TextStyle(
+        style: const TextStyle(
           color: AppColors.darkGreen,
-          fontSize: MediaQuery.of(context).size.height / 60,
+          fontSize: 14,
           fontWeight: FontWeight.bold,
         ));
   }
 
   Widget buttonText(IconData icon, String text, void Function() onPressed) {
-    return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width / 2,
-            MediaQuery.of(context).size.height / 15),
-        backgroundColor: AppColors.white,
-        side: const BorderSide(
-          color: AppColors.darkGreen,
-          width: 1,
+    return Expanded(
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          elevation: 5,
+          backgroundColor: AppColors.white,
+          side: const BorderSide(
+            color: AppColors.darkGreen,
+            width: 1,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+        icon: Icon(
+          icon,
+          color: icon == Icons.stop ? Colors.red : AppColors.darkGreen,
         ),
+        onPressed: () {
+          onPressed();
+        },
+        label: actionsText(text),
       ),
-      icon: Icon(
-        icon,
-        color: icon == Icons.stop ? Colors.red : AppColors.darkGreen,
-      ),
-      onPressed: () {
-        onPressed();
-      },
-      label: actionsText(text),
     );
   }
 

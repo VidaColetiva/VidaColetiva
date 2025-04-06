@@ -5,7 +5,6 @@ import 'package:vidacoletiva/controllers/project_controller.dart';
 import 'package:vidacoletiva/views/events/event_card.dart';
 import '../resources/assets/colour_pallete.dart';
 import '../resources/widgets/main_app_bar.dart';
-import '../resources/widgets/main_drawer.dart';
 
 class MyContributionsPage extends StatefulWidget {
   const MyContributionsPage({super.key});
@@ -22,31 +21,27 @@ class _MyContributionsPageState extends State<MyContributionsPage> {
         Provider.of<ProjectController>(context);
 
     return Scaffold(
-      appBar: mainAppBar(context, leading: true),
-      endDrawer: mainDrawer(context),
+      appBar: mainAppBar(context, leading: true, profile: false),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        const Text('Minhas contribuições',
-                            style: TextStyle(
-                              color: AppColors.darkGreen,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            )),
-                        ...eventController
-                            .getEventsOnProject(
-                                projectController.project!.id ?? "0")
-                            .map((e) => EventCard(event: e))
-                      ],
-                    ),
+                    const Text('Minhas contribuições',
+                        style: TextStyle(
+                          color: AppColors.darkGreen,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    ...eventController
+                        .getEventsOnProject(
+                            projectController.project!.id ?? "0")
+                        .map((e) => EventCard(event: e))
                   ],
                 ),
                 ElevatedButton(
