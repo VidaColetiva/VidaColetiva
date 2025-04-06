@@ -105,17 +105,17 @@ class _ProjectPageState extends State<ProjectPage> {
   }
 
   Widget aboutText(ProjectController projectController) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text('Sobre',
-          style: TextStyle(
-              color: AppColors.darkGreen,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -0.5)),
-      Row(
-        children: [
-          Flexible(
-            child: Text(
+    return Row(
+      children: [
+        Flexible(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Text('Sobre',
+                style: TextStyle(
+                    color: AppColors.darkGreen,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5)),
+            Text(
                 (projectController.project!.description != null &&
                         projectController.project!.description!.isNotEmpty)
                     ? projectController.project!.description!
@@ -125,10 +125,10 @@ class _ProjectPageState extends State<ProjectPage> {
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     letterSpacing: -0.5)),
-          ),
-        ],
-      ),
-    ]);
+          ]),
+        ),
+      ],
+    );
   }
 
   Widget myContributions() {
@@ -147,7 +147,7 @@ class _ProjectPageState extends State<ProjectPage> {
         Navigator.pushNamed(context, '/my_contributions');
       },
       child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
