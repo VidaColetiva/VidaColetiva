@@ -86,18 +86,38 @@ class _ProjectPageState extends State<ProjectPage> {
                 ),
               ),
         Positioned(
-          bottom: 10,
+          bottom: 0,
           left: 0,
           right: 0,
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height / 50,
-                left: MediaQuery.of(context).size.width / 20),
-            child: Text(projectController.project!.name ?? "Nome do projeto",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.height / 25,
-                    fontWeight: FontWeight.bold)),
+          child: Container(
+            height: 100,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  Colors.black,
+                  Colors.black,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: 8,
+                      left: 8),
+                  child: Text(projectController.project!.name ?? "Nome do projeto",
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
           ),
         )
       ],
