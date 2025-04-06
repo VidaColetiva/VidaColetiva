@@ -59,7 +59,7 @@ class Home2Page extends StatelessWidget {
           autoPlay: true,
           autoPlayInterval: const Duration(seconds: 5),
           autoPlayAnimationDuration: const Duration(milliseconds: 1000),
-          clipBehavior: Clip.none,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           enlargeCenterPage: true
         ),
         items: carouselImages);
