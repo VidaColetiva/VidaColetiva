@@ -29,7 +29,7 @@ class ProjectModel {
     isOpen = json['is_open'];
     ownerId = json['owner_id'];
     if (json["media"] != null) {
-      mediaModel = ProjectMediaModel.fromJson(this, json["media"]);
+      mediaModel = ProjectMediaModel.fromJson(this, json["media"])..getUrl();
     }
   }
 
@@ -61,7 +61,7 @@ class ProjectModel {
     ownerId = data["owner_id"];
     if (data["media"] != null) {
       media = data["media"];
-      mediaModel = ProjectMediaModel.fromFirebase(this, data["media"]);
+      mediaModel = ProjectMediaModel.fromFirebase(this, data["media"])..getUrl();
     }
   }
 

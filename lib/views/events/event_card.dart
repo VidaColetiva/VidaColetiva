@@ -40,25 +40,22 @@ class EventCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 4/6,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(event.title ?? 'Título do evento',
-                        style: const TextStyle(
-                          color: AppColors.darkGreen,
-                          fontSize: 12, // MediaQuery.of(context).size.height / 35,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    Text('${event.mediaList?.length ?? 0} mídias',
-                        style: const TextStyle(
-                          color: AppColors.grey,
-                          fontSize: 12,
-                        )),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(event.title ?? 'Título do evento',
+                      style: const TextStyle(
+                        color: AppColors.darkGreen,
+                        fontSize: 12, // MediaQuery.of(context).size.height / 35,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Text('${event.mediaList?.length ?? 0} mídias',
+                      style: const TextStyle(
+                        color: AppColors.grey,
+                        fontSize: 12,
+                      )),
+                ],
               ),
               const Icon(
                 Icons.arrow_forward_ios_rounded,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../assets/colour_pallete.dart';
 
-AppBar mainAppBar(BuildContext mainContext,
+SliverAppBar mainSliverAppBar(BuildContext mainContext,
     {bool? leading, bool profile = true, GlobalKey<ScaffoldState>? scaffoldKey}) {
-  return AppBar(
+  return SliverAppBar(
     leading: leading == true
         ? IconButton(
             icon: const Icon(Icons.arrow_back_ios),

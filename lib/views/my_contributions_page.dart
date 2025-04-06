@@ -31,25 +31,28 @@ class _MyContributionsPageState extends State<MyContributionsPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
+                Row(
                   children: [
-                    Text('Minhas contribuições',
-                        style: TextStyle(
-                          color: AppColors.darkGreen,
-                          fontSize: MediaQuery.of(context).size.height / 30,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    ...eventController
-                        .getEventsOnProject(
-                            projectController.project!.id ?? "0")
-                        .map((e) => EventCard(event: e))
+                    Column(
+                      children: [
+                        const Text('Minhas contribuições',
+                            style: TextStyle(
+                              color: AppColors.darkGreen,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        ...eventController
+                            .getEventsOnProject(
+                                projectController.project!.id ?? "0")
+                            .map((e) => EventCard(event: e))
+                      ],
+                    ),
                   ],
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
-                    fixedSize: Size(MediaQuery.of(context).size.width * 0.7,
-                        MediaQuery.of(context).size.height / 15),
+                    minimumSize: const Size(double.infinity, 50),
                     backgroundColor: AppColors.darkGreen,
                     side: const BorderSide(
                       color: AppColors.darkGreen,
@@ -62,10 +65,10 @@ class _MyContributionsPageState extends State<MyContributionsPage> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/add_event');
                   },
-                  child: Text('Contribuir',
+                  child: const Text('Contribuir',
                       style: TextStyle(
                         color: AppColors.white,
-                        fontSize: MediaQuery.of(context).size.height / 35,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       )),
                 ),

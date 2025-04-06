@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/event_controller.dart';
 import 'package:vidacoletiva/controllers/project_controller.dart';
@@ -31,8 +32,8 @@ class VidaColetiva extends StatelessWidget {
           ChangeNotifierProvider<EventController>(
               create: (_) => EventController(GetIt.I.get())..init()),
           ChangeNotifierProxyProvider<UserController, ProjectController>(
-            create: (_) => ProjectController(GetIt.I.get(), null),
-            update: (_, userController, __) => ProjectController(GetIt.I.get(), userController)..init(),
+            create: (_) => ProjectController(_, GetIt.I.get(), null),
+            update: (_, userController, __) => ProjectController(_, GetIt.I.get(), userController)..init(),
         ),
         ],
         builder: (context, child) {
@@ -41,6 +42,44 @@ class VidaColetiva extends StatelessWidget {
             title: 'Vida Coletiva',
             theme: ThemeData(
               primaryColor: AppColors.primaryOrange,
+              textTheme: TextTheme(
+                bodyLarge: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 16,
+                ),
+                bodyMedium: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 14,
+                ),
+                bodySmall: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 12,
+                ),
+                titleLarge: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 20,
+                ),
+                titleMedium: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 18,
+                ),
+                titleSmall: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 16,
+                ),
+                labelLarge: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 16,
+                ),
+                labelMedium: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 14,
+                ),
+                labelSmall: GoogleFonts.quicksand(
+                  color: AppColors.black,
+                  fontSize: 12,
+                ),
+              ),
             ),
             initialRoute: '/',
             routes: {

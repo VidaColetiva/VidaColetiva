@@ -23,25 +23,28 @@ class _ProjectPageState extends State<ProjectPage> {
     return Scaffold(
       appBar: mainAppBar(context, leading: true, profile: false),
       // endDrawer: mainDrawer(context),
+      floatingActionButton: addEventButton(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             leadingImage(projectController),
             Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-              child: aboutText(projectController),
-            ),
-            if (userController.isSuperAdmin)
-              Padding(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-                child: allEventButton(context, projectController.project!.id),
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  aboutText(projectController),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  if (userController.isSuperAdmin)
+                    allEventButton(context, projectController.project!.id),
+                    const SizedBox(
+                    height: 10,
+                  ),
+                  myContributions(),
+                ],
               ),
-            myContributions(),
-            Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-              child: addEventButton(),
-            ),
+            )
           ],
         ),
       ),
@@ -51,34 +54,37 @@ class _ProjectPageState extends State<ProjectPage> {
   Widget leadingImage(ProjectController projectController) {
     return Stack(
       children: [
-        projectController.project!.media != null ?
-        FutureBuilder(
-          future: projectController.project!.mediaModel!.getUrl(),
-          builder: (context, snapshot){
-            if (snapshot.data == null) {
-              return const CircularProgressIndicator();
-            }
-
-            return Container(
-              height: MediaQuery.of(context).size.height / 3.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(snapshot.data.toString()),
-                  fit: BoxFit.cover,
+        projectController.project!.media != null
+            ? FutureBuilder(
+                future: projectController.project!.mediaModel!.getUrl(),
+                builder: (context, snapshot) {
+                  if (snapshot.data == null) {
+                    return const CircularProgressIndicator();
+                  }
+                  return Hero(
+                    tag: "${projectController.project!.name}_image",
+                    child: Container(
+                      height: 300,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(snapshot.data.toString()),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              )
+            : Container(
+                height: 300,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'lib/resources/assets/images/stock-image.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            );
-          },
-        ) :
-        Container(
-          height: MediaQuery.of(context).size.height / 3.5,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/resources/assets/images/stock-image.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
         Positioned(
           bottom: 10,
           left: 0,
@@ -99,34 +105,33 @@ class _ProjectPageState extends State<ProjectPage> {
   }
 
   Widget aboutText(ProjectController projectController) {
-    return Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.height / 50),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Sobre',
-              style: TextStyle(
-                  color: AppColors.darkGreen,
-                  fontSize: MediaQuery.of(context).size.height / 35,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -0.5)),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text('Sobre',
+          style: TextStyle(
+              color: AppColors.darkGreen,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              letterSpacing: -0.5)),
+      Row(
+        children: [
           Text(
               (projectController.project!.description != null &&
                       projectController.project!.description!.isNotEmpty)
                   ? projectController.project!.description!
                   : "Não há descrição para o projeto ${projectController.project!.name}",
-              style: TextStyle(
+              style: const TextStyle(
                   color: AppColors.darkGreen,
-                  fontSize: MediaQuery.of(context).size.height / 45,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   letterSpacing: -0.5)),
-        ]));
+        ],
+      ),
+    ]);
   }
 
   Widget myContributions() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
-            MediaQuery.of(context).size.height / 13),
         backgroundColor: AppColors.white,
         side: const BorderSide(
           color: AppColors.darkGreen,
@@ -139,21 +144,24 @@ class _ProjectPageState extends State<ProjectPage> {
       onPressed: () {
         Navigator.pushNamed(context, '/my_contributions');
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Minhas contribuições',
-              style: TextStyle(
-                color: AppColors.darkGreen,
-                fontSize: MediaQuery.of(context).size.height / 40,
-                fontWeight: FontWeight.bold,
-              )),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: AppColors.darkGreen,
-            size: MediaQuery.of(context).size.height / 30,
-          )
-        ],
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Minhas Contribuições',
+                style: TextStyle(
+                  color: AppColors.darkGreen,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: AppColors.darkGreen,
+              size: 32,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -161,9 +169,6 @@ class _ProjectPageState extends State<ProjectPage> {
   Widget allEventButton(BuildContext context, String? projectId) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
-            MediaQuery.of(context).size.height / 13),
         backgroundColor: AppColors.white,
         side: const BorderSide(
           color: AppColors.darkGreen,
@@ -174,70 +179,39 @@ class _ProjectPageState extends State<ProjectPage> {
         ),
       ),
       onPressed: () {
-        Provider.of<EventController>(context, listen:false).listEventsOnProject(projectId ?? "");
+        Provider.of<EventController>(context, listen: false)
+            .listEventsOnProject(projectId ?? "");
         Navigator.pushNamed(context, '/all_events');
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Todos Relatos',
-              style: TextStyle(
-                color: AppColors.darkGreen,
-                fontSize: MediaQuery.of(context).size.height / 40,
-                fontWeight: FontWeight.bold,
-              )),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: AppColors.darkGreen,
-            size: MediaQuery.of(context).size.height / 30,
-          )
-        ],
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Todos Relatos',
+                style: TextStyle(
+                  color: AppColors.darkGreen,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: AppColors.darkGreen,
+              size: 32,
+            )
+          ],
+        ),
       ),
     );
   }
 
   Widget addEventButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 5,
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.8,
-            MediaQuery.of(context).size.height / 13),
-        backgroundColor: AppColors.white,
-        side: const BorderSide(
-          color: AppColors.darkGreen,
-          width: 1,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
+    return FloatingActionButton(
+      backgroundColor: AppColors.primaryGreen,
       onPressed: () {
         Navigator.pushNamed(context, '/add_event');
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: AppColors.primaryGreen,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Icon(Icons.add, color: AppColors.white, size: 24),
-          ),
-          Text('Contribuir',
-              style: TextStyle(
-                color: AppColors.darkGreen,
-                fontSize: MediaQuery.of(context).size.height / 40,
-                fontWeight: FontWeight.bold,
-              )),
-          const Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: AppColors.darkGreen,
-          )
-        ],
-      ),
+      child: const Icon(Icons.add, color: AppColors.white),
     );
   }
 }

@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidacoletiva/controllers/project_controller.dart';
-import 'package:vidacoletiva/data/models/media_model.dart';
 import 'package:vidacoletiva/resources/widgets/add_app_bar.dart';
 
-import 'package:image_picker/image_picker.dart';
 import '../resources/assets/colour_pallete.dart';
 
 class AddProjectPage extends StatefulWidget {
@@ -16,130 +13,83 @@ class AddProjectPage extends StatefulWidget {
 }
 
 class _AddProjectPageState extends State<AddProjectPage> {
-  File? selectedImage;
-  CreateMedia? createMedia;
-  TextEditingController nameController = TextEditingController();
-  TextEditingController institutionController = TextEditingController();
-  TextEditingController targetController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  bool isOpen = false;
-
-  Future pickImageFromGallery() async {
-    final returnedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    if (returnedImage == null) return;
-
-    File f = File(returnedImage.path);
-
-    setState(() {
-      selectedImage = f;
-    });
-
-    createMedia = CreateMedia(f, f.path.split('.').last);
-  }
-
   @override
   Widget build(BuildContext context) {
     final ProjectController projectController =
         Provider.of<ProjectController>(context);
 
     return Scaffold(
-      appBar: addAppBar(context, 'Criar um projeto', onPressed: () async {
-        await projectController.createProject(
-          nameController.text,
-          institutionController.text,
-          targetController.text,
-          descriptionController.text,
-          createMedia,
-          isOpen
-        );
-        Navigator.pop(context);
-      }, isCheck: true),
+      appBar: addAppBar(context, 'Criar um projeto',
+          onPressed: () => projectController.createProject(context),
+          isCheck: true),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.height / 30),
-              child: formImage(),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 120,
-                  horizontal: MediaQuery.of(context).size.width / 20),
-              child: customFormField(
-                controller: institutionController,
-                info: 'a',
-                label: 'Instituição',
-                minLines: 1,
-                maxLines: 1,
-                tipo: TextInputType.text,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 120,
-                  horizontal: MediaQuery.of(context).size.width / 20),
-              child: customFormField(
-                controller: targetController,
-                info: 'o',
-                label: 'Publico alvo',
-                minLines: 1,
-                maxLines: 1,
-                tipo: TextInputType.text,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 120,
-                  horizontal: MediaQuery.of(context).size.width / 20),
-              child: customFormField(
-                controller: descriptionController,
-                info: 'a',
-                label: 'Descrição',
-                minLines: 5,
-                maxLines: 10,
-                tipo: TextInputType.multiline,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 120,
-                  horizontal: MediaQuery.of(context).size.width / 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Projeto aberto ao público?',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.darkGreen,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+            key: projectController.createProjectFormKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: formImage(),
+                ),
+                customFormField(
+                  controller: projectController.institutionController,
+                  info: 'a',
+                  label: 'Instituição',
+                  minLines: 1,
+                  maxLines: 1,
+                  tipo: TextInputType.text,
+                ),
+                customFormField(
+                  controller: projectController.targetController,
+                  info: 'o',
+                  label: 'Publico alvo',
+                  minLines: 1,
+                  maxLines: 1,
+                  tipo: TextInputType.text,
+                ),
+                customFormField(
+                  controller: projectController.descriptionController,
+                  info: 'a',
+                  label: 'Descrição',
+                  minLines: 5,
+                  maxLines: 10,
+                  tipo: TextInputType.multiline,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Projeto aberto ao público?',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.darkGreen,
+                      ),
                     ),
-                  ),
-                  Switch(
-                    value: isOpen,
-                    onChanged: (bool value) {
-                      setState(() {
-                        isOpen = value;
-                      });
-                    },
-                    activeColor: AppColors.primaryOrange,
-                  ),
-                ],
-              ),
+                    Switch(
+                      value: projectController.isOpen,
+                      onChanged: projectController.setIsOpen,
+                      activeColor: AppColors.primaryOrange,
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
   Widget formImage() {
+    final ProjectController projectController =
+        Provider.of<ProjectController>(context);
     return Stack(
       children: [
-        selectedImage == null
+        projectController.selectedImage == null
             ? Container(
-                height: MediaQuery.of(context).size.height / 3.5,
+                height: 300,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   gradient: const LinearGradient(
@@ -161,7 +111,7 @@ class _AddProjectPageState extends State<AddProjectPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   image: DecorationImage(
-                    image: FileImage(selectedImage!),
+                    image: FileImage(projectController.selectedImage!),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -177,12 +127,9 @@ class _AddProjectPageState extends State<AddProjectPage> {
         Positioned(
           right: 0,
           child: IconButton(
-            icon: const Icon(Icons.image_outlined),
-            color: AppColors.white,
-            onPressed: () {
-              pickImageFromGallery();
-            },
-          ),
+              icon: const Icon(Icons.image_outlined),
+              color: AppColors.white,
+              onPressed: projectController.pickImageFromGallery),
         ),
         Positioned(
           bottom: 10,
@@ -193,9 +140,15 @@ class _AddProjectPageState extends State<AddProjectPage> {
               MediaQuery.of(context).size.height / 50,
             ),
             child: TextFormField(
-              controller: nameController,
+              controller: projectController.nameController,
               selectionControls: MaterialTextSelectionControls(),
               cursorColor: AppColors.white,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Informe o título do projeto...';
+                }
+                return null;
+              },
               style: TextStyle(
                 color: AppColors.white,
                 fontSize: MediaQuery.of(context).size.height / 30,

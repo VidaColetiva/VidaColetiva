@@ -42,7 +42,7 @@ class EventModel {
     if (json["media"] != null) {
       List<MediaModel> l = [];
       for (var m in json["media"]) {
-        l.add(MediaModel.fromJson(this, m));
+        l.add(MediaModel.fromJson(this, m)..getUrl());
       }
       mediaModelList = l;
     }
@@ -61,7 +61,8 @@ class EventModel {
       List<MediaModel> l = [];
       mediaList = [];
       for (var m in data["media"]) {
-        l.add(MediaModel.fromFirebase(this, m));
+        l.add(MediaModel.fromFirebase(this, m)..getUrl());
+
         mediaList!.add(m);
       }
       mediaModelList = l;

@@ -34,17 +34,17 @@ class ProjectsCarousel extends StatelessWidget {
   }
 
   Widget projectText(String cardText, BuildContext context,
-      {required int fontSize, double? letterSpacing, int? maxLines}) {
+      {required double fontSize, double? letterSpacing, int? maxLines}) {
     return Padding(
-      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 30),
+      padding: const EdgeInsets.only(right: 16),
       child: Text(
         cardText,
         softWrap: true,
         textAlign: TextAlign.left,
         maxLines: maxLines ?? 1,
         style: TextStyle(
-            color: AppColors.darkGreen,
-            fontSize: MediaQuery.of(context).size.height / fontSize,
+            color: AppColors.black,
+            fontSize: fontSize,
             fontWeight: FontWeight.bold,
             letterSpacing: letterSpacing ?? 0,
             height: 1),
@@ -63,8 +63,8 @@ class ProjectsCarousel extends StatelessWidget {
           Navigator.pushNamed(context, '/project');
         },
         child: Container(
-          width: MediaQuery.of(context).size.width / 2.5,
-          height: MediaQuery.of(context).size.height / 6,
+          width: 200,
+          height: 100,
           decoration: BoxDecoration(
             color: containerColor, // Cor de fundo do container
             borderRadius: BorderRadius.circular(11),
@@ -77,9 +77,9 @@ class ProjectsCarousel extends StatelessWidget {
                   vertical: MediaQuery.of(context).size.height / 50,
                 ),
                 child: Container(
-                  width: MediaQuery.of(context).size.width / 150,
+                  width: 10,
                   decoration: BoxDecoration(
-                    color: AppColors.darkGreen, // Cor de fundo do container
+                    color: AppColors.white, // Cor de fundo do container
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -94,19 +94,19 @@ class ProjectsCarousel extends StatelessWidget {
                           top: MediaQuery.of(context).size.height / 50),
                       child: projectText(
                           projectModel.name ?? "Projeto", context,
-                          fontSize: 35, letterSpacing: -1, maxLines: 2),
+                          fontSize: 20, letterSpacing: -1, maxLines: 2),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         projectText(projectModel.institution ?? "", context,
-                            fontSize: 60),
+                            fontSize: 14),
                         Padding(
                           padding: EdgeInsets.only(
                               bottom: MediaQuery.of(context).size.height / 50),
                           child: projectText(projectModel.target ?? "", context,
-                              fontSize: 60),
+                              fontSize: 14),
                         ),
                       ],
                     ),

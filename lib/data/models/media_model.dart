@@ -38,6 +38,7 @@ class MediaModel {
   String? name;
   String? userID;
   MediaDataType? dataType;
+  Future<String>? url;
 
   MediaModel.fromJson(this.event, Map<String, dynamic> json) {
     // counter = json["counter"];
@@ -86,10 +87,14 @@ class MediaModel {
     }
   }
 
-  Future<String> getUrl() {
-    return FirebaseStorage.instance
+  Future<String> getUrl() async {
+    if (url != null) {
+      return url!;
+    }
+    url = FirebaseStorage.instance
         .ref('$userID/${event.id}/$name')
         .getDownloadURL();
+    return url!;
   }
 
   Future<Uint8List?> getBytes() {
@@ -102,6 +107,7 @@ class ProjectMediaModel {
   String? name;
   String? userID;
   MediaDataType? dataType;
+  Future<String>? url;
 
   ProjectMediaModel.fromJson(this.project, Map<String, dynamic> json) {
     // counter = json["counter"];
@@ -132,14 +138,20 @@ class ProjectMediaModel {
     dataType = MediaModel.dataTypeFromMime(n[1]);
   }
 
-  Future<String> getUrl() {
+  Future<String> getUrl() async {
+    if (url != null) {
+      return url!;
+    }
     print('$userID/${project.id}/$name');
-    return FirebaseStorage.instance
+    url = FirebaseStorage.instance
         .ref('$userID/${project.id}/$name')
         .getDownloadURL();
+    return url!;
   }
 
   Future<Uint8List?> getBytes() {
-    return FirebaseStorage.instance.ref('$userID/${project.id}/$name').getData();
+    return FirebaseStorage.instance
+        .ref('$userID/${project.id}/$name')
+        .getData();
   }
 }

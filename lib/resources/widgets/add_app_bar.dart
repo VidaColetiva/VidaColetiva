@@ -7,19 +7,18 @@ AppBar addAppBar(BuildContext context, String title,
     centerTitle: true,
     leading: IconButton(
       icon: const Icon(Icons.close),
-      iconSize: MediaQuery.of(context).size.height / 25,
+      iconSize: 24,
       color: AppColors.white,
       onPressed: () {
         onBeforeNavigateBack?.call();
         Navigator.pop(context);
       },
     ),
-    toolbarHeight: MediaQuery.of(context).size.height / 9,
     title: Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.white,
-        fontSize: MediaQuery.of(context).size.height / 35,
+        fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -28,13 +27,13 @@ AppBar addAppBar(BuildContext context, String title,
       if (isEdit)
       IconButton(
         icon: const Icon(Icons.edit),
-        iconSize: MediaQuery.of(context).size.height/25,
+        iconSize: 24,
         color: AppColors.white,
         onPressed: editFunction,
       ),
       if (isCheck) IconButton(
         icon: const Icon(Icons.check),
-        iconSize: MediaQuery.of(context).size.height / 25,
+        iconSize: 24,
         color: AppColors.white,
         onPressed: onPressed,
       ),
