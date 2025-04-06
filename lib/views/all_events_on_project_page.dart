@@ -14,20 +14,36 @@ class AllEventsOnProjectPage extends StatelessWidget {
     EventController eventController = Provider.of(context);
     ProjectController projectController = Provider.of(context);
     String projectId = projectController.project!.id!;
+    List<EventModel> events = eventController.getAllEventsOnProject(projectId);
     return Scaffold(
-        appBar: mainAppBar(context),
-        body: SingleChildScrollView(
-            child:
-                eventList(eventController.getAllEventsOnProject(projectId))));
+        appBar: mainAppBar(context, leading: true, profile: false),
+        body: CustomScrollView(
+          slivers: [
+            SliverList(
+                delegate: SliverChildListDelegate([
+              ...eventController
+                  .getAllDates(events)
+                  .map((e) => eventList(e, events)),
+            ])),
+          ],
+        ));
   }
 
-  Widget eventList(List<EventModel> events) {
-    return Column(
-      children: events
-          .map((e) => EventCard(
-                event: e,
-              ))
-          .toList(),
-    );
+  Widget eventList(DateTime date, List<EventModel> events) {
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Text(
+          '${date.day.toString().padLeft(2,'0')}/${date.month.toString().padLeft(2,'0')}/${date.year}',
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ...events.map((e) => EventCard(
+            event: e,
+          ))
+    ]);
   }
 }

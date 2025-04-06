@@ -9,7 +9,7 @@ class EventController extends ChangeNotifier {
   EventController(this.eventService);
 
   List<EventModel> events = [];
-  Map<String,List<EventModel>> eventsInProject = {};
+  Map<String, List<EventModel>> eventsInProject = {};
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -33,7 +33,7 @@ class EventController extends ChangeNotifier {
     var e = events.where((ev) => ev.projectId == projectId).toList();
     return e;
   }
-  
+
   List<EventModel> getAllEventsOnProject(String? projectId) {
     if (projectId == null) {
       return [];
@@ -41,7 +41,8 @@ class EventController extends ChangeNotifier {
     return eventsInProject[projectId] ?? [];
   }
 
-  Future<bool> createEvent(String? title, String? description, String projectId, List<CreateMedia> mediaList) async {
+  Future<bool> createEvent(String? title, String? description, String projectId,
+      List<CreateMedia> mediaList) async {
     if (formKey.currentState == null || !formKey.currentState!.validate()) {
       return false;
     }
@@ -56,5 +57,22 @@ class EventController extends ChangeNotifier {
     notifyListeners();
     return true;
     // await listOwnEvents();
+  }
+
+  List<DateTime> getAllDates(List<EventModel> events) {
+    Set<DateTime> dateSet = {};
+    for (var e in events) {
+      if (e.createdAt == null) {
+        continue;
+      }
+      DateTime d = DateTime(
+          e.createdAt!.year, e.createdAt!.month, e.createdAt!.day);
+      dateSet.add(d);
+    }
+    return dateSet.toList()..sort((a, b) => b.compareTo(a));
+    // return dates
+    //     .map((date) =>
+    //         "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}")
+    //     .toList();
   }
 }

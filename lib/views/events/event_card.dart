@@ -17,7 +17,6 @@ class EventCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          elevation: 5,
           backgroundColor: AppColors.white,
           side: const BorderSide(
             color: AppColors.darkGreen,
@@ -40,22 +39,25 @@ class EventCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(event.title ?? 'Título do evento',
-                      style: const TextStyle(
-                        color: AppColors.darkGreen,
-                        fontSize: 12, // MediaQuery.of(context).size.height / 35,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Text('${event.mediaList?.length ?? 0} mídias',
-                      style: const TextStyle(
-                        color: AppColors.grey,
-                        fontSize: 12,
-                      )),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(event.title ?? 'Título do evento',
+                        style: const TextStyle(
+                          color: AppColors.darkGreen,
+                          fontSize: 12, // MediaQuery.of(context).size.height / 35,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Text('${event.mediaList?.length ?? 0} mídias',
+                        style: const TextStyle(
+                          color: AppColors.grey,
+                          fontSize: 12,
+                        )),
+                        
+                  ],
+                ),
               ),
               const Icon(
                 Icons.arrow_forward_ios_rounded,
