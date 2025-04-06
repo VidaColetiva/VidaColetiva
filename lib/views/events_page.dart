@@ -33,7 +33,10 @@ class _EventsPageState extends State<EventsPage> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
               ),
-              ...eventController.events.map((e) => EventCard(event: e))
+              ...eventController.events.map((e) => EventCard(event: e)),
+              const SizedBox(
+                height: 40,
+              )
             ],
           ),
         ),
