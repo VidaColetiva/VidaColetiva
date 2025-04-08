@@ -125,7 +125,7 @@ class _AddEventPageState extends State<AddEventPage> {
       body: SingleChildScrollView(
         child: Form(
           key: eventController.formKey,
-          child: Column(
+          child: Column( 
             children: [
               // leadingImage(projectController),
               Padding(
@@ -210,7 +210,7 @@ class _AddEventPageState extends State<AddEventPage> {
         descriptionFormField(),
         Padding(
           padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
+              const EdgeInsets.only(bottom: 8),
           child: recordingPath == null
               ? buttonText(isRecording ? Icons.stop : Icons.mic,
                   isRecording ? 'Parar gravação' : 'Gravar áudio', recordAudio)
@@ -298,28 +298,30 @@ class _AddEventPageState extends State<AddEventPage> {
   }
 
   Widget buttonText(IconData icon, String text, void Function() onPressed) {
-    return Expanded(
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          elevation: 5,
-          backgroundColor: AppColors.white,
-          side: const BorderSide(
-            color: AppColors.darkGreen,
-            width: 1,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              elevation: 5,
+              backgroundColor: AppColors.white,
+              side: const BorderSide(
+                color: AppColors.darkGreen,
+                width: 1,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+            icon: Icon(
+              icon,
+              color: icon == Icons.stop ? Colors.red : AppColors.darkGreen,
+            ),
+            onPressed: onPressed,
+            label: actionsText(text),
           ),
         ),
-        icon: Icon(
-          icon,
-          color: icon == Icons.stop ? Colors.red : AppColors.darkGreen,
-        ),
-        onPressed: () {
-          onPressed();
-        },
-        label: actionsText(text),
-      ),
+      ],
     );
   }
 
