@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="nova tela de adicionar projeto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/repositories/user_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/user_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/services/login_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/services/login_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +92,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Flutter.main.dart.executor": "Debug",
+    "Flutter.main.dart.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -168,20 +167,35 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
+        <line-breakpoint type="Dart">
           <url>file://$PROJECT_DIR$/lib/data/repositories/user_repository.dart</url>
           <line>24</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
+        <line-breakpoint type="Dart">
           <url>file://$PROJECT_DIR$/lib/data/services/login_service.dart</url>
           <line>32</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint type="Dart">
+          <url>file://$PROJECT_DIR$/lib/data/services/login_service.dart</url>
+          <line>73</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/data/services/login_service.dart</url>
-          <line>59</line>
-          <option name="timeStamp" value="16" />
+          <line>47</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/data/services/login_service.dart</url>
+          <line>48</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/data/repositories/user_repository.dart</url>
+          <line>21</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

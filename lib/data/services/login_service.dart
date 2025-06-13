@@ -44,6 +44,20 @@ class LoginService {
     userRepository.createSelf();
   }
 
+  onAppleSignIn(UserCredential auth) async {
+    try {
+      if (auth.user != null) {
+        await auth.user!.reload();
+        firebaseAuth = FirebaseAuth.instance;
+        // Optionally, you can assign the user to firebaseAuth.currentUser
+        // firebaseAuth.currentUser = auth.user; // Not needed, handled internally
+      }
+    } catch (err) {
+      debugPrint("onAppleSignIn: $err");
+    }
+    userRepository.createSelf();
+  }
+
   Future<GoogleSignInAccount?> signInWithGoogle() async {
     debugPrint("Attempting Google sign-in...");
     _account = await googleSignIn.signIn();
@@ -68,10 +82,11 @@ class LoginService {
 
     if (auth.user != null) {
       debugPrint("Apple sign-in successful: ${auth.user?.email}");
-      userRepository.createSelf();
+      await onAppleSignIn(auth);
     } else {
       debugPrint("Apple sign-in failed or cancelled.");
     }
+    return auth;
   }
 
   Future<UserCredential> _whenPlatformApple() async {
