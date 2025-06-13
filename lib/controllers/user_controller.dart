@@ -64,6 +64,23 @@ class UserController extends ChangeNotifier {
     notifyListeners();
   }
 
+  loginApple() async {
+    isLoading = true;
+    notifyListeners();
+    var acc = await _loginService.signInWithApple();
+    isLoading = false;
+    if (acc != null) {
+      await Future.wait([
+        _userRepository.getSelf().then((value) => user = value),
+        _userRepository.getIsSuperAdmin().then((value) => isSuperAdmin = value)
+      ]);
+      isLogged = true;
+    } else {
+      isLogged = false;
+    }
+    notifyListeners();
+  }
+
   logout() async {
     isLogged = false;
     await _loginService.signOut();

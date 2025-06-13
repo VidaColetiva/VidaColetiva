@@ -44,6 +44,30 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             googleLoginWidget(context),
+
+
+        ElevatedButton(
+            onPressed: () async {
+              if (!context.mounted) {
+                return;
+              }
+              UserController u =Provider.of<UserController>(context, listen: false);
+              EventController e = Provider.of<EventController>(context, listen: false);
+              await u.loginApple();
+              e.listOwnEvents();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primaryGreen,
+            ),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Entrar com Apple",
+                style: TextStyle(color: AppColors.white, fontSize: 20),
+              ),
+            )),
+
+
             versionWidget(),
           ],
         ),

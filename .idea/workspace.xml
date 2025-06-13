@@ -10,14 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="826db974-aab5-4d6d-ab23-600c5cd936c1" name="Changes" comment="nova tela de adicionar projeto">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/models/media_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/models/media_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/models/project_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/models/project_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/repositories/project_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/project_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/add_project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/add_project_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/project_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/project_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controllers/user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controllers/user_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +46,31 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1749773354" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="apple-login" />
+                    <option name="lastUsedInstant" value="1749773330" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,12 +92,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Flutter.main.dart.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "/home/joao/Desktop/STI/vidacoletiva",
     "settings.editor.selected.configurable": "vcs.Git",

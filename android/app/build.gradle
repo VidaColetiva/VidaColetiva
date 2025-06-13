@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "br.uff.vidacoletiva"
-    compileSdkVersion 34
+    compileSdkVersion 35
 //    ndkVersion flutter.ndkVersion
     ndkVersion = "27.0.12077973"
 
