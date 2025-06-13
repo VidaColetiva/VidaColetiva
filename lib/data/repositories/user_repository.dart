@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:vidacoletiva/data/models/user_model.dart';
 
 class UserRepository {
@@ -21,14 +22,16 @@ class UserRepository {
     DocumentReference<Map<String,dynamic>> documentReference = FirebaseFirestore.instance
         .doc('/users/${FirebaseAuth.instance.currentUser!.uid}');
     DocumentSnapshot<Map<String,dynamic>> documentSnapshot = await documentReference.get();
-    if (documentSnapshot.exists) return UserModel.fromJson(documentSnapshot.data()!);
-
-    documentReference.set({
-      'created_at': DateTime.now(),
-      'updated_at': DateTime.now(),
-      'email': FirebaseAuth.instance.currentUser!.email,
-    });
-    return UserModel.fromJson({'email': FirebaseAuth.instance.currentUser!.email});
+    if (documentSnapshot.exists) {
+      return UserModel.fromJson(documentSnapshot.data()!);
+    } else {
+      documentReference.set({
+        'created_at': DateTime.now(),
+        'updated_at': DateTime.now(),
+        'email': FirebaseAuth.instance.currentUser!.email,
+      });
+      return UserModel.fromJson({'email': FirebaseAuth.instance.currentUser!.email});
+    }
   }
 
   Future<bool> getIsSuperAdmin() async {

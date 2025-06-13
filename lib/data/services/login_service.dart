@@ -45,15 +45,19 @@ class LoginService {
   }
 
   Future<GoogleSignInAccount?> signInWithGoogle() async {
+    debugPrint("Attempting Google sign-in...");
     _account = await googleSignIn.signIn();
     if (_account != null) {
+      debugPrint("Google sign-in successful: ${_account!.email}");
       await onSignIn();
       return _account;
     }
+    debugPrint("Google sign-in failed or cancelled.");
     return _account;
   }
 
   signInWithApple() async {
+    debugPrint("Attempting Apple sign-in...");
     UserCredential auth;
     if (Platform.isIOS) {
       auth = await _whenPlatformApple();
@@ -63,7 +67,10 @@ class LoginService {
     }
 
     if (auth.user != null) {
+      debugPrint("Apple sign-in successful: ${auth.user?.email}");
       userRepository.createSelf();
+    } else {
+      debugPrint("Apple sign-in failed or cancelled.");
     }
   }
 
