@@ -74,6 +74,7 @@ class LoginService {
     debugPrint("Attempting Apple sign-in...");
     UserCredential auth;
     if (Platform.isIOS) {
+      debugPrint("Iphone...");
       auth = await _whenPlatformApple();
     } else {
       var appleProvider = AppleAuthProvider();
@@ -114,8 +115,7 @@ class LoginService {
         ],
         webAuthenticationOptions: WebAuthenticationOptions(
             clientId: "br.uff.vidacoletivaid",
-            redirectUri: Uri.parse(
-                "https://vida-coletiva-736b4.firebaseapp.com/__/auth/handler")),
+            redirectUri: Uri.parse("https://vida-coletiva-736b4.firebaseapp.com/__/auth/handler")),
         nonce: nonce);
 
     // Create an `OAuthCredential` from the credential returned by Apple.
