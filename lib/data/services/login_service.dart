@@ -73,21 +73,20 @@ class LoginService {
   signInWithApple() async {
     debugPrint("Attempting Apple sign-in...");
     UserCredential auth;
-    if (Platform.isIOS) {
-      debugPrint("Iphone...");
-      auth = await _whenPlatformApple();
-    } else {
-      var appleProvider = AppleAuthProvider();
-      auth = await FirebaseAuth.instance.signInWithProvider(appleProvider);
-    }
 
-    if (auth.user != null) {
-      debugPrint("Apple sign-in successful: ${auth.user?.email}");
-      await onAppleSignIn(auth);
-    } else {
-      debugPrint("Apple sign-in failed or cancelled.");
+    try {
+      auth = await _whenPlatformApple(); // Funciona tanto no Android quanto no iOS via web
+      if (auth.user != null) {
+        debugPrint("Apple sign-in successful: ${auth.user?.email}");
+        await onAppleSignIn(auth);
+      } else {
+        debugPrint("Apple sign-in failed or cancelled.");
+      }
+      return auth;
+    } catch (e) {
+      debugPrint("Apple sign-in error: $e");
+      rethrow;
     }
-    return auth;
   }
 
   Future<UserCredential> _whenPlatformApple() async {
