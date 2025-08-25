@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: EdgeInsets.symmetric(
                     vertical: MediaQuery.of(context).size.height / 30),
                 child: Text(
-                  _firebaseAuth.currentUser!.displayName!,
+                  _firebaseAuth.currentUser!.displayName?? "-",
                   style: TextStyle(
                       color: AppColors.darkGreen,
                       fontWeight: FontWeight.bold,

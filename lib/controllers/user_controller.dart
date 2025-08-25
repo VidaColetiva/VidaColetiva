@@ -33,7 +33,7 @@ class UserController extends ChangeNotifier {
 
   String getDisplayName() {
     if (FirebaseAuth.instance.currentUser == null) return "";
-    return FirebaseAuth.instance.currentUser!.displayName!;
+    return FirebaseAuth.instance.currentUser!.displayName?? "-";
   }
 
   getPhotoUrl() {
